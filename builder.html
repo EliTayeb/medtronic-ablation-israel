@@ -59,13 +59,6 @@
     box-shadow:0 12px 30px -24px rgba(16,16,80,.5)}
   .goal h3{font-size:17px;color:var(--navy);display:flex;align-items:center;gap:9px;margin-bottom:8px}
   .goal p{font-size:14.5px;color:var(--mut)}
-  .goal.hidden-goal{border:1.5px dashed var(--gold);background:#fffdf5}
-  .goal.hidden-goal h3{color:#8a6d12}
-  .conf{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
-    background:#8a6d12;color:#fff;padding:3px 9px;border-radius:20px;margin-bottom:10px}
-  .goal.hidden-goal details{margin-top:8px}
-  .goal.hidden-goal summary{cursor:pointer;font-size:13px;font-weight:700;color:#8a6d12}
-  .goal.hidden-goal details p{margin-top:8px}
 
   /* steps */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
@@ -99,6 +92,26 @@
   .have .mk{background:#e6f6ee;color:var(--green)}
   .need .mk{background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a}
   .inv small{color:var(--mut)}
+  /* collection checklist */
+  .collect{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;margin-top:18px;
+    box-shadow:0 12px 30px -24px rgba(16,16,80,.5)}
+  .collect-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+  .collect-head h3{font-size:18px;color:var(--navy)}
+  .collect-head p{font-size:13.5px;color:var(--mut)}
+  .copybtn{border:none;background:var(--blue);color:#fff;font-size:13.5px;font-weight:700;padding:11px 18px;
+    border-radius:11px;cursor:pointer;transition:.15s;white-space:nowrap;box-shadow:0 8px 20px -10px rgba(16,16,235,.7)}
+  .copybtn:hover{background:#0b0bc8;transform:translateY(-1px)}
+  .copybtn.done{background:var(--green);box-shadow:none}
+  .catgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 28px}
+  .cat h4{font-size:14px;color:var(--navy);display:flex;align-items:center;gap:8px;margin-bottom:10px;
+    padding-bottom:7px;border-bottom:1px solid var(--line)}
+  .cat .num{width:22px;height:22px;border-radius:6px;background:#eef0ff;color:var(--blue);font-weight:800;
+    font-size:12px;display:grid;place-items:center;flex:none}
+  .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);
+    color:#fff;padding:12px 22px;border-radius:30px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;
+    transition:.25s;z-index:60;box-shadow:0 12px 30px -10px rgba(0,0,0,.5)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media(max-width:760px){.catgrid{grid-template-columns:1fr}}
 
   /* stats */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px}
@@ -311,18 +324,109 @@
           </ul>
           <small>Source: internal account &amp; capital-equipment records.</small>
         </div>
-        <div class="inv need">
-          <h3>🟠 Still to collect</h3>
+        <div class="inv need" style="border-left-color:var(--amber)">
+          <h3>🟠 Why this step gates everything</h3>
+          <p style="font-size:14px;color:var(--mut)">The decks currently run on <b>illustrative placeholder</b> numbers. To put a credible buy-vs-ship case and a focused marketing plan in front of the CEO, every figure below needs a real, sourced number. Nothing else ships until this is done.</p>
+          <small>Use the master checklist below to kick off collection — one click copies it.</small>
+        </div>
+      </div>
+
+      <!-- MASTER CHECKLIST -->
+      <div class="collect">
+        <div class="collect-head">
+          <div>
+            <h3>📋 Master data-collection checklist</h3>
+            <p>Everything we need before building the final CEO deck. Click to copy and share with the team.</p>
+          </div>
+          <button class="copybtn" id="copyCollect">⧉ Copy checklist</button>
+        </div>
+        <div class="catgrid">
+          <div class="cat">
+            <h4><span class="num">1</span> Logistics &amp; shipping <span style="font-weight:400;color:var(--mut);font-size:12px">(buy-vs-ship case)</span></h4>
+            <ul class="chk">
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Shipping log per shuttle site — dates, origin→destination, trips/yr, transport mode, distance (km)</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Cost per shipment — courier/van, fuel &amp; tolls, insurance, rep travel time &amp; cost, calibration/decontamination/turnaround</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Delay &amp; disruption incidents — date, cause, hours/days lost, case postponed or cancelled, lost revenue, customer impact</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>System utilization — % time in transit vs in use; scheduling conflicts / double-bookings</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Transport-related damage &amp; repair costs</div></li>
+            </ul>
+          </div>
+          <div class="cat">
+            <h4><span class="num">2</span> Equipment &amp; capital</h4>
+            <ul class="chk">
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Capital purchase price per system — Emprint HP (generator+cart+pump); Cool-tip E-Series</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Useful life / depreciation; service-contract economics (PM ₪7,600/unit known)</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Consumable pull-through per system/yr (antennas, RF electrodes, return pads) + ASPs</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Fixed-asset register cleanup — lost/mislocated units; faulty Hadassah unit status</div></li>
+            </ul>
+          </div>
+          <div class="cat">
+            <h4><span class="num">3</span> Clinical volume &amp; revenue <span style="font-weight:400;color:var(--mut);font-size:12px">(marketing focus)</span></h4>
+            <ul class="chk">
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Procedures per site/yr by franchise (liver/kidney MWA vs bone/osteoid-osteoma RF)</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Revenue per procedure and per account</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Addressable market — eligible patients (HCC, colorectal liver mets, RCC, osteoid osteoma) in Israel + growth</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Our procedure share vs competitors and vs cryo, per account</div></li>
+            </ul>
+          </div>
+          <div class="cat">
+            <h4><span class="num">4</span> Competition &amp; threats</h4>
+            <ul class="chk">
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Cryoablation footprint &amp; growth — which sites, which vendor, # cases converted</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Root cause — anesthesiologist availability by site</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Competitor (Solero / Neuwave / Amica) install base, pricing, win/loss reasons</div></li>
+            </ul>
+          </div>
+          <div class="cat">
+            <h4><span class="num">5</span> Replication to other countries</h4>
+            <ul class="chk">
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Candidate comparable markets — geography/distances, # centers, reimbursement, install base, behavioral similarity</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Baseline KPIs so the playbook is portable &amp; measurable</div></li>
+            </ul>
+          </div>
+          <div class="cat">
+            <h4><span class="num">6</span> Presenter (Ron Shomrat)</h4>
+            <ul class="chk">
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Headshot + role/title + years of experience</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>1–2 more quantified projects — placements, savings, account wins, training programs</div></li>
+            </ul>
+          </div>
+          <div class="cat">
+            <h4><span class="num">7</span> Business-case assumptions</h4>
+            <ul class="chk">
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Capital budget constraints, payback / ROI threshold, discount rate</div></li>
+              <li><span class="mk" style="background:#fff3e0;color:var(--amber);border:1.5px solid #f2c98a">!</span><div>Current service-level / NPS baseline</div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOW TO GET IT + IDEAS -->
+      <div class="invgrid" style="margin-top:18px">
+        <div class="inv have" style="border-left-color:var(--blue)">
+          <h3>🧭 Where to get it — sources &amp; approaches</h3>
           <ul class="chk">
-            <li><span class="mk">!</span><div><b>Shipping logs</b> — dates, routes, frequency, who travelled.</div></li>
-            <li><span class="mk">!</span><div><b>Cost per shipment</b> — logistics + rep time + turnaround.</div></li>
-            <li><span class="mk">!</span><div><b>Delay incidents</b> — cause, length, cases postponed/lost.</div></li>
-            <li><span class="mk">!</span><div><b>Equipment purchase price</b> (Emprint HP / E-Series capital cost).</div></li>
-            <li><span class="mk">!</span><div><b>Procedure volume &amp; revenue</b> per site/year.</div></li>
-            <li><span class="mk">!</span><div><b>Planned locations</b> — next placements &amp; rationale.</div></li>
-            <li><span class="mk">!</span><div><b>Ron Shomrat</b> — bio, prior projects + outcomes, <b>photos</b>.</div></li>
+            <li><span class="mk" style="background:#eef0ff;color:var(--blue)">→</span><div><b>SAP / service-dispatch</b> records → shipping history &amp; PM.</div></li>
+            <li><span class="mk" style="background:#eef0ff;color:var(--blue)">→</span><div><b>Courier &amp; logistics invoices</b> → true per-trip cost.</div></li>
+            <li><span class="mk" style="background:#eef0ff;color:var(--blue)">→</span><div><b>CRM (Salesforce)</b> rep activity &amp; travel logs → rep-time cost.</div></li>
+            <li><span class="mk" style="background:#eef0ff;color:var(--blue)">→</span><div><b>Finance / controlling</b> → capital cost, depreciation, consumable revenue.</div></li>
+            <li><span class="mk" style="background:#eef0ff;color:var(--blue)">→</span><div><b>Field-rep interviews</b> → delay stories &amp; verbatim quotes for the deck.</div></li>
+            <li><span class="mk" style="background:#eef0ff;color:var(--blue)">→</span><div><b>Key-account interviews / NPS pulse</b> → service-impact evidence.</div></li>
+            <li><span class="mk" style="background:#eef0ff;color:var(--blue)">→</span><div><b>Shared weekly template</b> reps fill → builds the dataset fast.</div></li>
+            <li><span class="mk" style="background:#eef0ff;color:var(--blue)">→</span><div><b>Benchmark</b> a site/country that already owns equipment → before/after proof.</div></li>
           </ul>
-          <small>Until these arrive, drafts use clearly-labeled illustrative numbers.</small>
+        </div>
+        <div class="inv have" style="border-left-color:var(--teal)">
+          <h3>💡 Ideas to explore for the deck</h3>
+          <ul class="chk">
+            <li><span class="mk" style="background:#e6f7f7;color:#0a8489">＋</span><div><b>Buy-vs-ship ROI calculator</b> — sliders (trips/yr, cost/trip, capital) → payback.</div></li>
+            <li><span class="mk" style="background:#e6f7f7;color:#0a8489">＋</span><div><b>Procedure-volume heatmap</b> by site &amp; franchise.</div></li>
+            <li><span class="mk" style="background:#e6f7f7;color:#0a8489">＋</span><div><b>Phased rollout timeline</b> — which sites to place first.</div></li>
+            <li><span class="mk" style="background:#e6f7f7;color:#0a8489">＋</span><div><b>Before/after service metric</b> — on-time rate, delays, NPS.</div></li>
+            <li><span class="mk" style="background:#e6f7f7;color:#0a8489">＋</span><div><b>Replication map</b> of comparable countries.</div></li>
+            <li><span class="mk" style="background:#e6f7f7;color:#0a8489">＋</span><div><b>Clinician testimonial quotes</b> from interviews.</div></li>
+            <li><span class="mk" style="background:#e6f7f7;color:#0a8489">＋</span><div><b>Cryo-defense slide</b> — anesthesia-light workflow angle.</div></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -463,6 +567,7 @@
 </div>
 
 <div id="lb"><img src="" alt="expanded"></div>
+<div class="toast" id="toast">Checklist copied to clipboard ✓</div>
 
 <script>
 /* ---------- lightbox for project gallery ---------- */
@@ -472,6 +577,80 @@ document.querySelectorAll('.proj-gallery img').forEach(img=>{
 });
 lb.addEventListener('click',()=>lb.classList.remove('on'));
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') lb.classList.remove('on'); });
+
+/* ---------- copy the master data-collection checklist ---------- */
+const COLLECT_TEXT = `MEDTRONIC ABLATION · ISRAEL — STEP 1 DATA-COLLECTION CHECKLIST
+(Everything needed before building the final CEO deck. Replace all placeholder figures with real, sourced numbers.)
+
+1. LOGISTICS & SHIPPING (the buy-vs-ship case)
+[ ] Shipping log per shuttle site — dates, origin->destination, trips/yr, transport mode, distance (km)
+[ ] Cost per shipment — courier/van, fuel & tolls, insurance, rep travel time & cost, calibration/decontamination/turnaround
+[ ] Delay & disruption incidents — date, cause, hours/days lost, case postponed or cancelled, lost revenue, customer impact
+[ ] System utilization — % time in transit vs in use; scheduling conflicts / double-bookings
+[ ] Transport-related damage & repair costs
+
+2. EQUIPMENT & CAPITAL
+[ ] Capital purchase price per system — Emprint HP (generator+cart+pump); Cool-tip E-Series
+[ ] Useful life / depreciation; service-contract economics (PM ILS 7,600/unit known)
+[ ] Consumable pull-through per system/yr (antennas, RF electrodes, return pads) + ASPs
+[ ] Fixed-asset register cleanup — lost/mislocated units; faulty Hadassah unit status
+
+3. CLINICAL VOLUME & REVENUE (marketing focus)
+[ ] Procedures per site/yr by franchise (liver/kidney MWA vs bone/osteoid-osteoma RF)
+[ ] Revenue per procedure and per account
+[ ] Addressable market — eligible patients (HCC, colorectal liver mets, RCC, osteoid osteoma) in Israel + growth
+[ ] Our procedure share vs competitors and vs cryo, per account
+
+4. COMPETITION & THREATS
+[ ] Cryoablation footprint & growth — which sites, which vendor, # cases converted
+[ ] Root cause — anesthesiologist availability by site
+[ ] Competitor (Solero / Neuwave / Amica) install base, pricing, win/loss reasons
+
+5. REPLICATION TO OTHER COUNTRIES
+[ ] Candidate comparable markets — geography/distances, # centers, reimbursement, install base, behavioral similarity
+[ ] Baseline KPIs so the playbook is portable & measurable
+
+6. PRESENTER (Ron Shomrat)
+[ ] Headshot + role/title + years of experience
+[ ] 1-2 more quantified projects — placements, savings, account wins, training programs
+
+7. BUSINESS-CASE ASSUMPTIONS
+[ ] Capital budget constraints, payback / ROI threshold, discount rate
+[ ] Current service-level / NPS baseline
+
+WHERE TO GET IT — SOURCES & APPROACHES
+- SAP / service-dispatch records -> shipping history & PM
+- Courier & logistics invoices -> true per-trip cost
+- CRM (Salesforce) rep activity & travel logs -> rep-time cost
+- Finance / controlling -> capital cost, depreciation, consumable revenue
+- Field-rep interviews -> delay stories & verbatim quotes for the deck
+- Key-account interviews / NPS pulse -> service-impact evidence
+- Shared weekly template reps fill -> builds the dataset fast
+- Benchmark a site/country that already owns equipment -> before/after proof
+
+IDEAS TO EXPLORE FOR THE DECK
+- Buy-vs-ship ROI calculator (sliders: trips/yr, cost/trip, capital -> payback)
+- Procedure-volume heatmap by site & franchise
+- Phased rollout timeline (which sites to place first)
+- Before/after service metric (on-time rate, delays, NPS)
+- Replication map of comparable countries
+- Clinician testimonial quotes from interviews
+- Cryo-defense slide — anesthesia-light workflow angle`;
+
+const toast = document.getElementById('toast');
+function showToast(msg){ toast.textContent = msg; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),2200); }
+document.getElementById('copyCollect').addEventListener('click', async (e)=>{
+  const btn = e.currentTarget;
+  try{
+    await navigator.clipboard.writeText(COLLECT_TEXT);
+  }catch(err){
+    const ta=document.createElement('textarea'); ta.value=COLLECT_TEXT; document.body.appendChild(ta);
+    ta.select(); try{document.execCommand('copy');}catch(_){} document.body.removeChild(ta);
+  }
+  btn.classList.add('done'); const old=btn.textContent; btn.textContent='✓ Copied!';
+  showToast('Checklist copied to clipboard ✓');
+  setTimeout(()=>{ btn.classList.remove('done'); btn.textContent=old; }, 2200);
+});
 
 /* ---------- illustrative hospital dataset (PLACEHOLDER numbers) ---------- */
 const depot = {x:182, y:118}; // Yokneam lab (approx)

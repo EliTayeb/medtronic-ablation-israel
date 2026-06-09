@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ablation Israel — Growth &amp; Operations Strategy (CEO draft)</title>
+<style>
+  :root{--navy:#0a0a4a;--blue:#1010eb;--teal:#0fb5ba;--ink:#13132b;--mut:#6b6f86;--line:#e4e6f0;
+    --bg:#f4f5fb;--card:#fff;--amber:#e8902b;--red:#d23c4e;--green:#1f9d6b}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;background:var(--navy);color:var(--ink);overflow:hidden}
+  #deck{position:fixed;inset:0}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;padding:52px 68px 78px;background:var(--bg);animation:fade .45s ease}
+  .slide.active{display:flex}
+  @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .cover{background:linear-gradient(135deg,#06063a 0%,#10108f 55%,#1010eb 100%);color:#fff;justify-content:center;position:relative;overflow:hidden}
+  .cover::after{content:"";position:absolute;right:-160px;top:-160px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(15,181,186,.55),rgba(15,181,186,0) 70%)}
+  .cover .kicker{letter-spacing:.32em;font-size:13px;font-weight:600;color:#9fd9db;text-transform:uppercase}
+  .cover h1{font-size:60px;line-height:1.03;font-weight:700;margin:18px 0 14px;max-width:17ch}
+  .cover p{font-size:20px;color:#cdd2ff;max-width:60ch}
+  .cover .meta{margin-top:40px;font-size:15px;color:#cdd2ff}
+  .cover .meta b{color:#fff}
+  .logo{display:flex;align-items:center;gap:12px;font-weight:700;font-size:22px}
+  .logo .dot{width:14px;height:14px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(15,181,186,.25)}
+  .draft{position:absolute;top:22px;right:26px;font-size:11px;font-weight:800;letter-spacing:.14em;background:rgba(255,255,255,.16);color:#fff;padding:6px 12px;border-radius:20px;z-index:25}
+  .eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--blue)}
+  .eyebrow .bar{width:30px;height:3px;background:var(--teal);border-radius:2px}
+  h2{font-size:36px;font-weight:700;line-height:1.08;margin:13px 0 6px;color:var(--navy);max-width:24ch}
+  .sub{font-size:17px;color:var(--mut);margin-bottom:24px;max-width:84ch}
+  .body{flex:1;min-height:0;overflow:auto}
+  .body::-webkit-scrollbar{width:8px}.body::-webkit-scrollbar-thumb{background:#cfd3e6;border-radius:8px}
+  .grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:0 10px 30px -22px rgba(16,16,80,.4)}
+  .card h3{font-size:18px;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:9px}
+  .card p{font-size:14.5px;color:var(--mut);line-height:1.5}
+  .card .ic{width:32px;height:32px;border-radius:9px;background:#eef0ff;color:var(--blue);display:grid;place-items:center;font-size:16px;flex:none}
+  .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;background:#eef0ff;color:var(--blue)}
+  ul.clean{list-style:none;display:flex;flex-direction:column;gap:12px}
+  ul.clean li{position:relative;padding-left:26px;font-size:15.5px;line-height:1.5}
+  ul.clean li::before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:3px;background:var(--teal)}
+  ul.clean li b{color:var(--navy)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .stat{background:linear-gradient(160deg,#fff,#f3f4ff);border:1px solid var(--line);border-radius:16px;padding:22px}
+  .stat .n{font-size:42px;font-weight:800;color:var(--blue);line-height:1}
+  .stat.r .n{color:var(--red)}.stat.g .n{color:var(--green)}
+  .stat .l{font-size:13px;color:var(--mut);margin-top:8px;line-height:1.4}
+  .callout{border-left:5px solid var(--teal);background:#fff;border-radius:0 14px 14px 0;padding:18px 22px;font-size:16px;box-shadow:0 10px 30px -24px rgba(16,16,80,.5)}
+  .callout b{color:var(--navy)}
+  .foot{position:absolute;left:68px;right:68px;bottom:24px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--mut)}
+  .foot .brand{font-weight:700;color:var(--navy)}
+  .cover .foot{color:#9aa0d6}.cover .foot .brand{color:#fff}
+  .progress{position:absolute;left:0;bottom:0;height:4px;background:var(--teal);transition:width .4s ease;z-index:30}
+  .nav{position:fixed;bottom:18px;right:24px;display:flex;gap:8px;z-index:40}
+  .nav button{width:42px;height:42px;border-radius:50%;border:none;background:rgba(255,255,255,.9);color:var(--navy);font-size:18px;cursor:pointer;box-shadow:0 6px 18px -6px rgba(0,0,0,.4)}
+  .nav button:hover{background:#fff}
+  .counter{position:fixed;bottom:28px;left:24px;font-size:12px;color:rgba(255,255,255,.55);background:rgba(0,0,0,.18);padding:6px 12px;border-radius:20px;z-index:40}
+  .hint{position:fixed;top:18px;left:24px;font-size:11px;color:rgba(255,255,255,.4);z-index:25}
+  .illus{font-size:11.5px;color:var(--amber);font-weight:700}
+  /* presenter */
+  .pres{display:grid;grid-template-columns:300px 1fr;gap:30px;height:100%}
+  .pres .pic{border-radius:18px;overflow:hidden;box-shadow:0 16px 40px -22px rgba(16,16,80,.6)}
+  .pres .pic img{width:100%;height:100%;object-fit:cover}
+  .pres h2{margin-top:0}
+  .badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:#e6f7f7;color:#0a8489;padding:4px 11px;border-radius:20px;margin-bottom:8px}
+  /* map */
+  .mapslide{display:grid;grid-template-columns:300px 1fr;gap:24px;height:100%}
+  .mapstage{background:linear-gradient(180deg,#f4f6ff,#eaf0ff);border-radius:14px;display:grid;place-items:center;padding:8px}
+  svg.israel{display:block;height:100%;max-height:62vh;width:auto}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--mut)}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .dotk{width:11px;height:11px;border-radius:50%}.k-own{background:var(--green)}.k-ship{background:var(--red)}.k-plan{background:var(--amber)}
+  .pin{cursor:pointer}.pin circle.halo{opacity:0;transition:.2s}.pin.active circle.halo{opacity:.35}
+  .path{stroke:#d23c4e;stroke-width:1.4;stroke-dasharray:4 4;fill:none;opacity:.55}.path.hide{display:none}
+  .panel h3{font-size:18px;color:var(--navy)}.panel .role{font-size:12px;color:var(--mut);margin-bottom:12px}
+  .kv{display:grid;grid-template-columns:1fr auto;gap:8px 14px;font-size:13.5px;border-top:1px solid var(--line);padding:10px 0}
+  .kv .k{color:var(--mut)}.kv .v{font-weight:700;color:var(--navy);text-align:right}.v.save{color:var(--green)}.v.cost{color:var(--red)}
+  .pbadge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:8px}
+  .b-own{background:#e6f6ee;color:var(--green)}.b-ship{background:#fde7ea;color:var(--red)}.b-plan{background:#fff3e0;color:#b96a14}
+  .toggle{display:flex;gap:8px;margin-bottom:8px}
+  .toggle button{flex:1;border:1px solid var(--line);background:#fff;color:var(--navy);font-size:12.5px;font-weight:700;padding:9px;border-radius:10px;cursor:pointer}
+  .toggle button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .totbar{display:flex;gap:12px;margin:10px 0}
+  .tot{flex:1;background:#f4f6ff;border-radius:12px;padding:11px 13px}.tot .n{font-size:19px;font-weight:800;color:var(--navy)}.tot .l{font-size:10.5px;color:var(--mut)}
+  .timeline{display:flex;gap:0;margin-top:10px}
+  .ph{flex:1;position:relative;padding:0 10px}
+  .ph .dot{width:18px;height:18px;border-radius:50%;background:var(--blue);margin-bottom:10px}
+  .ph::before{content:"";position:absolute;top:8px;left:0;right:0;height:3px;background:#cdd2ee}
+  .ph:first-child::before{left:50%}.ph:last-child::before{right:50%}
+  .ph h4{font-size:15px;color:var(--navy);margin-bottom:3px}.ph p{font-size:13px;color:var(--mut)}
+  .ask{display:flex;flex-direction:column;gap:14px}
+  .ask .row{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 20px}
+  .ask .row .n{width:34px;height:34px;border-radius:10px;background:var(--blue);color:#fff;font-weight:800;display:grid;place-items:center;flex:none}
+  .ask .row b{color:var(--navy);font-size:16px}.ask .row span{color:var(--mut);font-size:14px}
+  .ask .row .amt{margin-left:auto;font-weight:800;color:var(--green);font-size:17px}
+</style>
+</head>
+<body>
+<div class="draft">● DRAFT</div>
+<div id="deck">
+
+  <!-- 1 COVER -->
+  <section class="slide cover active">
+    <div class="logo"><span class="dot"></span> Medtronic</div>
+    <div style="margin-top:auto">
+      <div class="kicker">Ablation Systems · Israel</div>
+      <h1>Growth &amp; Operations Strategy</h1>
+      <p>Increase sales with a focused, proven marketing strategy — and end the costly equipment-shipping model by owning gear where it pays. A playbook Israel proves and similar markets can copy.</p>
+      <div class="meta">Presented by <b>Ron Shomrat</b> &nbsp;·&nbsp; Draft for leadership review &nbsp;·&nbsp; figures illustrative</div>
+    </div>
+    <div class="foot"><span class="brand">Medtronic</span><span>Ablation · Israel</span></div>
+  </section>
+
+  <!-- 2 PRESENTER -->
+  <section class="slide">
+    <div class="pres">
+      <div class="pic"><img src="assets/ron-workshop-1.jpeg" alt="Ron Shomrat leading a hands-on surgical workshop"></div>
+      <div style="display:flex;flex-direction:column">
+        <div class="eyebrow"><span class="bar"></span> Who's presenting</div>
+        <h2>Ron Shomrat</h2>
+        <p class="sub" style="margin-bottom:16px">Ablation — Israel. A field leader who turns ideas into programs that scale.</p>
+        <span class="badge">World first · replicated globally</span>
+        <div class="card" style="margin-bottom:14px">
+          <h3>The Eilat surgical workshop</h3>
+          <p>Initiated and led the <b style="color:var(--navy)">world's first live surgical workshop for penile-prosthesis implant surgery</b> at a medical conference — with hands-on use of the OR products by physicians and residents. <b style="color:var(--navy)">The pilot was then adopted globally across Boston Scientific.</b></p>
+        </div>
+        <ul class="clean">
+          <li>Builds <b>programs in one market that scale worldwide</b> — the exact thesis of this plan.</li>
+          <li>Deep clinical relationships across Israel's major ablation centres.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot"><span class="brand">Ablation · Israel</span><span>02</span></div>
+  </section>
+
+  <!-- 3 OPPORTUNITY -->
+  <section class="slide">
+    <div class="eyebrow"><span class="bar"></span> The opportunity</div>
+    <h2>A strong position across two franchises</h2>
+    <p class="sub">Medtronic leads Israel's ablation market clinically and in field presence — across two distinct buyer groups.</p>
+    <div class="body">
+      <div class="grid g2" style="margin-bottom:18px">
+        <div class="card"><h3><span class="ic">🫀</span> Liver &amp; kidney — Microwave</h3><p>HPB surgeons + interventional radiologists. Platform: <b>Emprint HP / 100 W</b>. Anchor accounts: Hadassah, Ichilov, Rambam, Sheba, Carmel, Beilinson.</p></div>
+        <div class="card"><h3><span class="ic">🦴</span> Bone / osteoid osteoma — RF</h3><p>Orthopedic oncology + skeletal radiology. Platform: <b>Cool-tip RF E-Series</b>. Centres: Rambam, Shaare Zedek, Ichilov, HaEmek.</p></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n">~16</div><div class="l">Hospitals / accounts</div></div>
+        <div class="stat"><div class="n">~50</div><div class="l">Clinical contacts</div></div>
+        <div class="stat"><div class="n">~18</div><div class="l">Owned generators in the field</div></div>
+        <div class="stat g"><div class="n">0.97</div><div class="l">Emprint HP sphericity — best in class</div></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand">Ablation · Israel</span><span>03</span></div>
+  </section>
+
+  <!-- 4 MARKETING -->
+  <section class="slide">
+    <div class="eyebrow"><span class="bar"></span> Grow sales</div>
+    <h2>Smart, focused marketing — four moves</h2>
+    <p class="sub">Concentrate effort where the yield is highest and the clinical story is strongest.</p>
+    <div class="body">
+      <div class="grid g2">
+        <div class="card"><h3><span class="ic">1</span> Target the top tier</h3><p>Rank accounts by procedure volume &amp; consumable revenue; put senior coverage on the centres that move the number.</p></div>
+        <div class="card"><h3><span class="ic">2</span> Segment the message</h3><p>Tailor the value story to each franchise — liver/kidney MWA vs. bone RF — instead of one generic pitch.</p></div>
+        <div class="card"><h3><span class="ic">3</span> Lead with proof</h3><p>Emprint HP's edge: <b>0.97 sphericity</b>, <b>&gt;5 mm</b> margins, <b>3.57%</b> local progression at 12 mo — vs. Solero / Neuwave / Amica.</p></div>
+        <div class="card"><h3><span class="ic">4</span> Defend vs. cryo</h3><p>Win back Beilinson &amp; Laniado with an <b>anesthesia-light workflow</b> story — the real reason cases are shifting.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand">Ablation · Israel</span><span>04</span></div>
+  </section>
+
+  <!-- 5 PROCESS PROBLEM -->
+  <section class="slide">
+    <div class="eyebrow"><span class="bar"></span> The process problem</div>
+    <h2>We ship equipment around the country</h2>
+    <p class="sub">~8 sites have no permanent system — generators are physically shuttled to each case, often with a rep. It costs money, time, and service quality.</p>
+    <div class="body">
+      <div class="stats" style="margin-bottom:20px">
+        <div class="stat r"><div class="n">~8</div><div class="l">Sites on shuttle (no on-site system)</div></div>
+        <div class="stat r"><div class="n">↑ delays</div><div class="l">Surprise delays &amp; postponed cases</div></div>
+        <div class="stat r"><div class="n">rep time</div><div class="l">Reps escorting equipment, not selling</div></div>
+        <div class="stat"><div class="n">₪7,600</div><div class="l">Known annual PM cost / unit</div></div>
+      </div>
+      <div class="callout"><b>The pattern that hurts:</b> a system in transit is a system not generating cases — and a delayed delivery becomes a postponed procedure, a frustrated customer, and an opening for cryo or a competitor.</div>
+    </div>
+    <div class="foot"><span class="brand">Ablation · Israel</span><span>05</span></div>
+  </section>
+
+  <!-- 6 INTERACTIVE MAP -->
+  <section class="slide">
+    <div class="eyebrow"><span class="bar"></span> Buy vs. ship · interactive</div>
+    <h2>Where we ship — and what we'd save</h2>
+    <div class="body">
+      <div class="mapslide">
+        <div style="display:flex;flex-direction:column">
+          <div class="mapstage">
+            <svg class="israel" viewBox="0 0 300 600" id="svg">
+              <path d="M178 14 L236 40 L232 96 L214 150 L206 196 L200 232 L196 250 L182 300 L168 350 L150 430 L150 585 L132 560 L120 470 L108 380 L98 300 L96 250 L104 210 L114 168 L132 120 L150 84 L158 54 Z" fill="#dfe6ff" stroke="#b8c2f5" stroke-width="2"/>
+              <g id="paths"></g><g id="pins"></g>
+            </svg>
+          </div>
+          <div class="legend"><span><i class="dotk k-own"></i> Owned</span><span><i class="dotk k-ship"></i> Shipped</span><span><i class="dotk k-plan"></i> Planned</span></div>
+        </div>
+        <div class="panel" style="display:flex;flex-direction:column">
+          <div class="toggle"><button id="bCur" class="on">Current</button><button id="bProp">Proposed (after buying)</button></div>
+          <div class="totbar">
+            <div class="tot"><div class="n" id="totCost">—</div><div class="l">Annual shipping cost</div></div>
+            <div class="tot"><div class="n" id="totDelay">—</div><div class="l">Delays / yr</div></div>
+            <div class="tot"><div class="n" id="totSave" style="color:var(--green)">—</div><div class="l">Annual saving</div></div>
+          </div>
+          <div id="card"><div class="role">Click a pin to inspect a site →</div></div>
+          <div class="illus" style="margin-top:auto">⚠ Illustrative placeholders — replace with real shipping logs &amp; prices.</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand">Ablation · Israel</span><span>06</span></div>
+  </section>
+
+  <!-- 7 PLANNED PLACEMENTS -->
+  <section class="slide">
+    <div class="eyebrow"><span class="bar"></span> The plan</div>
+    <h2>Place systems where the math works</h2>
+    <p class="sub">Phase placements by shipping intensity, procedure volume, and competitive risk.</p>
+    <div class="body">
+      <div class="grid g3" style="margin-bottom:18px">
+        <div class="card"><span class="tag">Phase 1 · highest cost</span><h3 style="margin-top:8px">Rambam · Shaare Zedek</h3><p>Most shipments &amp; delays per year — fastest payback on a placed unit.</p></div>
+        <div class="card"><span class="tag" style="background:#fde7ea;color:#b32a3a">Phase 2 · defend</span><h3 style="margin-top:8px">Beilinson · Laniado</h3><p>Cryo is taking cases — on-site availability removes the workflow excuse.</p></div>
+        <div class="card"><span class="tag" style="background:#fff3e0;color:#b96a14">Phase 3 · on demand</span><h3 style="margin-top:8px">Kaplan · HaEmek · Poria</h3><p>Lower frequency — keep flexible shuttle or shared regional unit.</p></div>
+      </div>
+      <div class="callout"><b>Also close quick wins:</b> sign the Assaf Harofeh agreement, and clean the capital-asset register (recover lost/faulty units) to stop leaked service revenue.</div>
+    </div>
+    <div class="foot"><span class="brand">Ablation · Israel</span><span>07</span></div>
+  </section>
+
+  <!-- 8 BUSINESS CASE -->
+  <section class="slide">
+    <div class="eyebrow"><span class="bar"></span> The business case</div>
+    <h2>Buy once, save every year</h2>
+    <p class="sub">Illustrative model — final numbers pending the data-collection step.</p>
+    <div class="body">
+      <div class="stats" style="margin-bottom:20px">
+        <div class="stat r"><div class="n" id="bcCost">₪—</div><div class="l">Current annual shipping cost (all shuttle sites)</div></div>
+        <div class="stat g"><div class="n" id="bcSave">₪—</div><div class="l">Estimated annual saving after placements</div></div>
+        <div class="stat"><div class="n">~2–3 yr</div><div class="l">Typical simple payback per placed unit</div></div>
+        <div class="stat g"><div class="n">↑ service</div><div class="l">Fewer delays → higher satisfaction &amp; retention</div></div>
+      </div>
+      <div class="grid g3">
+        <div class="card"><h3>💸 Hard savings</h3><p>Eliminate per-trip logistics, rep travel time, and turnaround on the placed sites.</p></div>
+        <div class="card"><h3>📅 Reliability</h3><p>No transit dependency → no surprise delays → no postponed cases.</p></div>
+        <div class="card"><h3>📈 Pull-through</h3><p>An on-site system lifts case volume and consumable revenue (antennas, electrodes).</p></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand">Ablation · Israel</span><span>08</span></div>
+  </section>
+
+  <!-- 9 REPLICATION -->
+  <section class="slide">
+    <div class="eyebrow"><span class="bar"></span> Scale it</div>
+    <h2>Israel as the template for similar markets</h2>
+    <p class="sub">Everything here is parameterized — prove it once, then re-skin for the next country.</p>
+    <div class="body">
+      <div class="timeline" style="margin-bottom:22px">
+        <div class="ph"><div class="dot"></div><h4>Prove in Israel</h4><p>Marketing focus + placements → measurable sales &amp; cost wins.</p></div>
+        <div class="ph"><div class="dot"></div><h4>Codify the playbook</h4><p>Targeting model, buy-vs-ship calculator, KPI baseline.</p></div>
+        <div class="ph"><div class="dot"></div><h4>Select look-alikes</h4><p>Markets with similar geography, centres &amp; behaviour.</p></div>
+        <div class="ph"><div class="dot"></div><h4>Copy &amp; adapt</h4><p>Re-run the model with local numbers; roll out.</p></div>
+      </div>
+      <div class="callout"><b>Why it travels:</b> the same dynamics — shuttling equipment over distance, two clinical franchises, cryo pressure — exist in many comparable countries. The Israel result becomes the proof point.</div>
+    </div>
+    <div class="foot"><span class="brand">Ablation · Israel</span><span>09</span></div>
+  </section>
+
+  <!-- 10 THE ASK -->
+  <section class="slide">
+    <div class="eyebrow"><span class="bar"></span> The ask</div>
+    <h2>What we'd like to approve</h2>
+    <div class="body">
+      <div class="ask">
+        <div class="row"><div class="n">1</div><div><b>Capital for Phase-1 placements</b><br><span>Place units at the highest-shipping-cost sites first.</span></div><span class="amt">fast payback</span></div>
+        <div class="row"><div class="n">2</div><div><b>Green-light the focused marketing plan</b><br><span>Top-tier account targeting + cryo-defense play.</span></div><span class="amt">sales ↑</span></div>
+        <div class="row"><div class="n">3</div><div><b>Mandate the data &amp; asset cleanup</b><br><span>Real shipping/cost data + fix the capital register.</span></div><span class="amt">stop leakage</span></div>
+        <div class="row"><div class="n">4</div><div><b>Back Israel as the pilot for replication</b><br><span>Codify the playbook for similar markets.</span></div><span class="amt">scale</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand">Ablation · Israel</span><span>10</span></div>
+  </section>
+
+  <!-- 11 CLOSE -->
+  <section class="slide cover">
+    <div class="logo"><span class="dot"></span> Medtronic</div>
+    <div style="margin-top:auto">
+      <div class="kicker">In one line</div>
+      <h1 style="font-size:46px">Focus the selling. Own the equipment. Prove it here, then scale it.</h1>
+      <p>A focused marketing engine and an end to costly shuttling — measurable in Israel, repeatable everywhere.</p>
+      <div class="meta">Thank you · <b>Ron Shomrat</b></div>
+    </div>
+    <div class="foot"><span class="brand">Medtronic</span><span>Ablation · Israel</span></div>
+  </section>
+
+</div>
+
+<div class="progress" id="progress"></div>
+<div class="counter" id="counter">1 / 11</div>
+<div class="hint">← → navigate · click to advance</div>
+<div class="nav"><button id="prev">‹</button><button id="next">›</button></div>
+
+<script>
+/* ----- map data (illustrative placeholders; hospitals only) ----- */
+const depot={x:182,y:118};
+const sites=[
+  {id:'rivka',name:'Rivka Ziv (Safed)',x:243,y:72,status:'ship',sys:'Shuttle',ships:4,delays:1,cost:18000,price:240000,save:14000},
+  {id:'rambam',name:'Rambam (Haifa)',x:158,y:90,status:'ship',sys:'100W + E-Series',ships:9,delays:2,cost:41000,price:255000,save:33000},
+  {id:'carmel',name:'Carmel (Haifa)',x:150,y:104,status:'own',sys:'Emprint 100W',ships:0,delays:0,cost:0,price:0,save:0},
+  {id:'poria',name:'Poria (Tiberias)',x:246,y:104,status:'ship',sys:'Shuttle',ships:2,delays:1,cost:11000,price:240000,save:7000},
+  {id:'emek',name:'HaEmek (Afula)',x:206,y:124,status:'ship',sys:'Shuttle + E-Series',ships:7,delays:2,cost:32000,price:240000,save:25000},
+  {id:'laniado',name:'Laniado (Netanya)',x:133,y:166,status:'ship',sys:'Shuttle',ships:5,delays:2,cost:22000,price:240000,save:16000,flag:'cryo'},
+  {id:'beilin',name:'Beilinson (P.Tikva)',x:138,y:198,status:'ship',sys:'100W + Shuttle',ships:6,delays:3,cost:27000,price:255000,save:21000,flag:'cryo'},
+  {id:'ichilov',name:'Ichilov (Tel Aviv)',x:121,y:200,status:'own',sys:'HP + E-Series',ships:0,delays:0,cost:0,price:0,save:0},
+  {id:'assaf',name:'Assaf Harofeh',x:131,y:218,status:'own',sys:'Emprint 100W',ships:0,delays:0,cost:0,price:0,save:0,flag:'nocontract'},
+  {id:'kaplan',name:'Kaplan (Rehovot)',x:128,y:228,status:'ship',sys:'Shuttle 3-4x/yr',ships:4,delays:1,cost:16000,price:240000,save:12000},
+  {id:'hadassah',name:'Hadassah (J-lem)',x:179,y:244,status:'own',sys:'Emprint HP',ships:0,delays:0,cost:0,price:0,save:0},
+  {id:'szmc',name:'Shaare Zedek (J-lem)',x:191,y:250,status:'ship',sys:'100W + E-Series',ships:8,delays:2,cost:30000,price:255000,save:23000},
+  {id:'soroka',name:'Soroka (Beer Sheva)',x:127,y:321,status:'ship',sys:'Shuttle',ships:3,delays:1,cost:20000,price:240000,save:15000},
+  {id:'novomed',name:'Novomed / Maxed (J-lem)',x:171,y:258,status:'own',sys:'Customer-owned',ships:0,delays:0,cost:0,price:0,save:0},
+];
+const colors={own:'#1f9d6b',ship:'#d23c4e',plan:'#e8902b'};
+const NIS=n=>'₪'+(n>=1000?(n/1000).toFixed(n%1000?1:0)+'k':n);
+const pinsG=document.getElementById('pins'),pathsG=document.getElementById('paths');
+let proposed=false,activeId=null;
+sites.filter(s=>s.status==='ship').forEach(s=>{const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',`M${depot.x} ${depot.y} Q ${(depot.x+s.x)/2+14} ${(depot.y+s.y)/2} ${s.x} ${s.y}`);p.setAttribute('class','path');pathsG.appendChild(p);});
+const dep=document.createElementNS('http://www.w3.org/2000/svg','g');dep.innerHTML=`<rect x="${depot.x-6}" y="${depot.y-6}" width="12" height="12" rx="2" fill="#0a0a4a"/><text x="${depot.x+10}" y="${depot.y+4}" font-size="9" fill="#0a0a4a" font-weight="700">Yokneam depot</text>`;pinsG.appendChild(dep);
+sites.forEach(s=>{const g=document.createElementNS('http://www.w3.org/2000/svg','g');g.setAttribute('class','pin');g.dataset.id=s.id;const col=colors[s.status];g.innerHTML=`<circle class="halo" cx="${s.x}" cy="${s.y}" r="13" fill="${col}"/><circle cx="${s.x}" cy="${s.y}" r="6" fill="${col}" stroke="#fff" stroke-width="2"/>`;g.addEventListener('click',ev=>{ev.stopPropagation();select(s.id);});pinsG.appendChild(g);});
+const effStatus=s=>(proposed&&s.status==='ship')?'plan':s.status;
+function refreshPins(){document.querySelectorAll('.pin').forEach(g=>{const s=sites.find(x=>x.id===g.dataset.id);if(!s)return;const col=colors[effStatus(s)];g.querySelectorAll('circle').forEach(c=>c.setAttribute('fill',col));g.classList.toggle('active',g.dataset.id===activeId);});document.querySelectorAll('.path').forEach(p=>p.classList.toggle('hide',proposed));}
+const totalSave=sites.reduce((a,s)=>a+s.save,0),totalCost=sites.reduce((a,s)=>a+s.cost,0),totalDelay=sites.reduce((a,s)=>a+s.delays,0);
+function totals(){document.getElementById('totCost').textContent=proposed?'₪0':NIS(totalCost);document.getElementById('totDelay').textContent=proposed?'0':totalDelay;document.getElementById('totSave').textContent=proposed?NIS(totalSave):NIS(0);}
+function select(id){activeId=id;refreshPins();const s=sites.find(x=>x.id===id);const badge=s.status==='own'?'<span class="pbadge b-own">Owned / placed</span>':(effStatus(s)==='plan'?'<span class="pbadge b-plan">Planned placement</span>':'<span class="pbadge b-ship">Shipped (shuttle)</span>');let extra=s.flag==='cryo'?'<div class="illus" style="color:#d23c4e;margin-top:8px">⚠ Losing cases to cryoablation — priority defend.</div>':s.flag==='nocontract'?'<div class="illus" style="color:#d23c4e;margin-top:8px">⚠ On site without a signed agreement.</div>':'';let rows;if(s.status==='own'){rows=`<div class="kv"><span class="k">System</span><span class="v">${s.sys}</span></div><div class="kv"><span class="k">Shipping</span><span class="v">None — on site</span></div><div class="kv"><span class="k">Status</span><span class="v save">Stable service</span></div>`;}else if(proposed){rows=`<div class="kv"><span class="k">Current system</span><span class="v">${s.sys}</span></div><div class="kv"><span class="k">Buy-in capital</span><span class="v cost">${NIS(s.price)}</span></div><div class="kv"><span class="k">Shipping removed</span><span class="v">${NIS(s.cost)}/yr</span></div><div class="kv"><span class="k">Delays removed</span><span class="v">${s.delays}/yr</span></div><div class="kv"><span class="k">Annual saving</span><span class="v save">${NIS(s.save)}</span></div><div class="kv"><span class="k">Simple payback</span><span class="v">${(s.price/Math.max(s.save,1)).toFixed(1)} yrs</span></div>`;}else{rows=`<div class="kv"><span class="k">System</span><span class="v">${s.sys}</span></div><div class="kv"><span class="k">Shipments / yr</span><span class="v">${s.ships}</span></div><div class="kv"><span class="k">Delays / yr</span><span class="v cost">${s.delays}</span></div><div class="kv"><span class="k">Annual shipping</span><span class="v cost">${NIS(s.cost)}</span></div><div class="kv"><span class="k">Saving if purchased</span><span class="v save">${NIS(s.save)}</span></div>`;}
+document.getElementById('card').innerHTML=`${badge}<h3>${s.name}</h3><div class="role">${proposed?'Proposed scenario':'Current scenario'}</div>${rows}${extra}`;}
+function setToggle(){document.getElementById('bCur').classList.toggle('on',!proposed);document.getElementById('bProp').classList.toggle('on',proposed);refreshPins();totals();if(activeId)select(activeId);}
+document.getElementById('bCur').addEventListener('click',e=>{e.stopPropagation();proposed=false;setToggle();});
+document.getElementById('bProp').addEventListener('click',e=>{e.stopPropagation();proposed=true;setToggle();});
+refreshPins();totals();select('rambam');
+/* business-case slide numbers */
+document.getElementById('bcCost').textContent=NIS(totalCost);
+document.getElementById('bcSave').textContent=NIS(totalSave);
+
+/* ----- deck navigation ----- */
+const slides=[...document.querySelectorAll('.slide')];let i=0;
+const counter=document.getElementById('counter'),progress=document.getElementById('progress');
+function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle('active',k===i));counter.textContent=(i+1)+' / '+slides.length;progress.style.width=((i+1)/slides.length*100)+'%';}
+document.getElementById('next').onclick=()=>show(i+1);
+document.getElementById('prev').onclick=()=>show(i-1);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')show(i+1);if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1);});
+document.getElementById('deck').addEventListener('click',e=>{if(e.target.closest('.nav')||e.target.closest('.body')||e.target.closest('a'))return;show(i+1);});
+show(0);
+</script>
+</body>
+</html>
