@@ -133,12 +133,6 @@
     backdrop-filter:blur(12px);font-size:12.5px;font-weight:600}
   .map-legend span{display:flex;align-items:center;gap:8px}
   .map-legend .map-hint{color:var(--mut);font-weight:500;font-size:11.5px;margin-top:3px;border-top:1px solid var(--glassb);padding-top:8px}
-  .map-cost{position:absolute;right:18px;top:18px;z-index:3;text-align:right;
-    background:rgba(7,7,30,.66);border:1px solid var(--glassb);border-radius:14px;padding:13px 17px;backdrop-filter:blur(12px)}
-  .map-cost .mc-label{font-size:11px;font-weight:700;letter-spacing:.05em;color:var(--mut);text-transform:uppercase}
-  .map-cost .mc-val{font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.5px;
-    color:#ff9b6b;line-height:1.1;margin-top:3px}
-  .map-cost .mc-sub{font-size:11.5px;color:var(--mut);margin-top:2px}
   .dotk{width:11px;height:11px;border-radius:50%;box-shadow:0 0 9px currentColor}
   /* leaflet marker dots */
   .leaflet-div-icon{background:transparent;border:none}
@@ -281,11 +275,6 @@
         <div class="mapwrap">
           <div id="map"></div>
           <div class="map-vignette"></div>
-          <div class="map-cost">
-            <div class="mc-label">🚚 Annual shuttle spend · FY26</div>
-            <div class="mc-val" id="shuttleTotal">₪…</div>
-            <div class="mc-sub" id="shuttleSub">across the shuttle sites · ₪4k per round trip</div>
-          </div>
           <div class="map-legend">
             <span style="color:#23e6a0"><i class="dotk" style="background:#23e6a0"></i> Anchor KOL center</span>
             <span style="color:#4b8bff"><i class="dotk" style="background:#4b8bff"></i> Growth account</span>
@@ -492,26 +481,12 @@ function initMap(){
 /* ===== site modal ===== */
 const modal=document.getElementById('siteModal');
 const modalCard=document.getElementById('modalCard');
-const SHUTTLE_COST=4000;
-const nis=n=>'₪'+Math.round(n).toLocaleString('en-US');
-// roll up total shuttle spend across all shuttle sites (FY26)
-(function(){
-  const ss=sites.filter(s=>s.shuttle);
-  const total=ss.reduce((a,s)=>a+(s.trips||0)*SHUTTLE_COST,0);
-  const active=ss.filter(s=>(s.trips||0)>0).length;
-  const tEl=document.getElementById('shuttleTotal'), sEl=document.getElementById('shuttleSub');
-  if(tEl)tEl.textContent=nis(total);
-  if(sEl)sEl.textContent=`${active} active sites · ₪4k per round trip`;
-})();
 function openModal(id){
   const s=sites.find(x=>x.id===id), L2=LVL[s.lvl];
   modalCard.style.setProperty('--mc',L2.c);
   let shuttleRows='';
   if(s.shuttle){
-    const cost=(s.trips||0)*SHUTTLE_COST;
-    shuttleRows=
-      `<div class="kv"><span class="k">Shuttle trips (FY26)</span><span class="v">${s.trips||0}</span></div>
-       <div class="kv"><span class="k">Shuttle spend</span><span class="v" style="color:#ff9b6b">${nis(cost)}<span style="color:var(--mut);font-weight:500"> /yr</span></span></div>`;
+    shuttleRows=`<div class="kv"><span class="k">Shuttle</span><span class="v" style="color:#ff9b6b">~₪4k per transfer</span></div>`;
   }
   document.getElementById('modalBody').innerHTML=
     `<span class="tagp" style="${L2.b}">${L2.t}</span>
@@ -520,7 +495,7 @@ function openModal(id){
      <div class="kv"><span class="k">Systems</span><span class="v">${s.sys}</span></div>
      ${shuttleRows}
      <div class="opp">🎯 <b>Opportunity:</b> ${s.opp}</div>
-     ${s.shuttle?'<div style="font-size:11.5px;color:var(--mut);margin-top:10px">No on-site system. A unit is shuttled per case at ₪4,000 round trip (FY26 consumption).</div>':''}`;
+     ${s.shuttle?'<div style="font-size:11.5px;color:var(--mut);margin-top:10px">No on-site system. Each case shuttles a unit at about ₪4,000 per transfer, which we can save by placing a system here.</div>':''}`;
   modal.classList.add('on');
 }
 function closeModal(){ modal.classList.remove('on'); }
