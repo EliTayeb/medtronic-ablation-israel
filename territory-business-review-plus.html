@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Territory Business Review FY27 · Strategic Plan · Israel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg0:#05041c;--ink:#eaf0ff;--mut:#9aa3d8;--cobalt:#2b2bff;--cyan:#23e6e6;--violet:#8a6bff;--accent:#23e6e6;
+    --green:#23e6a0;--amber:#f0a93a;--red:#ff6b6b;--glass:rgba(255,255,255,.06);--glassb:rgba(255,255,255,.14)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:'Hanken Grotesk',sans-serif;background:var(--bg0);color:var(--ink);overflow:hidden;-webkit-font-smoothing:antialiased}
+  .bg{position:fixed;inset:0;z-index:0;background:
+    radial-gradient(1200px 700px at 78% -10%,#15124f 0,rgba(10,9,66,0) 60%),
+    radial-gradient(900px 600px at 8% 110%,#0c1b55 0,rgba(5,4,28,0) 60%),
+    linear-gradient(160deg,#05041c,#070736 55%,#05041c)}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.42;will-change:transform}
+  .b1{width:520px;height:520px;background:radial-gradient(circle,var(--cobalt),transparent 70%);left:-120px;top:-90px;animation:d1 28s ease-in-out infinite}
+  .b2{width:560px;height:560px;background:radial-gradient(circle,var(--violet),transparent 70%);right:-150px;top:25%;opacity:.3;animation:d2 34s ease-in-out infinite}
+  @keyframes d1{0%,100%{transform:translate(0,0)}50%{transform:translate(110px,70px)}}
+  @keyframes d2{0%,100%{transform:translate(0,0)}50%{transform:translate(-90px,60px)}}
+  .grid-ov{position:fixed;inset:0;z-index:0;opacity:.05;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+    background-size:54px 54px;mask-image:radial-gradient(circle at 50% 40%,#000 30%,transparent 80%)}
+  #deck{position:relative;z-index:2;height:100%}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;padding:54px 74px 88px;animation:in .55s cubic-bezier(.2,.7,.2,1)}
+  .slide.active{display:flex}
+  @keyframes in{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  .reveal{opacity:0;transform:translateY(15px);animation:rv .65s ease forwards}
+  .slide.active .reveal{animation:rv .65s ease forwards}
+  .r1{animation-delay:.06s}.r2{animation-delay:.16s}.r3{animation-delay:.28s}.r4{animation-delay:.4s}
+  @keyframes rv{to{opacity:1;transform:none}}
+  .brand{display:inline-flex;align-items:center;background:#fff;border-radius:12px;padding:9px 16px;box-shadow:0 10px 30px -12px rgba(0,0,0,.7)}
+  .brand img{height:24px;display:block}
+  .eyebrow{display:flex;align-items:center;gap:11px;font-size:12px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--accent)}
+  .eyebrow .bar{width:32px;height:2px;background:var(--accent);border-radius:2px;box-shadow:0 0 12px var(--accent)}
+  h1{font-family:'Bricolage Grotesque',sans-serif;font-size:60px;line-height:1;font-weight:800;letter-spacing:-1.2px}
+  .stitle{font-family:'Bricolage Grotesque',sans-serif;font-size:64px;line-height:1;font-weight:800;letter-spacing:-1.4px;margin:10px 0 4px}
+  .grad{background:linear-gradient(100deg,#fff,var(--cyan) 50%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{font-size:18px;color:var(--mut);max-width:80ch;line-height:1.55}
+  .body{flex:1;min-height:0;overflow:auto;margin-top:14px}
+  .body::-webkit-scrollbar{width:8px}.body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:8px}
+  /* SWOT stepper */
+  .swot-nav{display:flex;gap:10px;margin-top:10px}
+  .swot-nav span{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);
+    border:1px solid var(--glassb);border-radius:20px;padding:5px 13px}
+  .swot-nav span.on{color:#03031a;background:var(--accent);border-color:var(--accent)}
+  .swlayout{display:grid;grid-template-columns:1.35fr .65fr;gap:34px;align-items:center;height:100%}
+  .bigletter{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:300px;line-height:.78;letter-spacing:-12px;text-align:center;user-select:none}
+  ul.clean{list-style:none;display:flex;flex-direction:column;gap:13px}
+  ul.clean li{position:relative;padding-left:28px;font-size:17px;line-height:1.5}
+  ul.clean li::before{content:"";position:absolute;left:0;top:8px;width:11px;height:11px;border-radius:3px;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+  ul.clean li b{color:#fff}
+  .sl-s li::before{background:var(--green);box-shadow:0 0 10px var(--green)}
+  .sl-w li::before{background:var(--red);box-shadow:0 0 10px var(--red)}
+  .sl-o li::before{background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+  .sl-t li::before{background:var(--amber);box-shadow:0 0 10px var(--amber)}
+  .stat{display:inline-block;background:var(--glass);border:1px solid var(--glassb);border-radius:16px;padding:18px 22px;backdrop-filter:blur(10px);margin-bottom:14px}
+  .stat .n{font-family:'Bricolage Grotesque',sans-serif;font-size:44px;font-weight:800;line-height:1;color:var(--green)}
+  .stat .l{font-size:13px;color:var(--mut);margin-top:5px;max-width:30ch}
+  .recflag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:rgba(35,230,160,.16);color:var(--green);padding:3px 10px;border-radius:20px;margin-left:8px;vertical-align:middle}
+  .tl{display:flex;gap:0;margin-top:10px}
+  .tl .ph{flex:1;padding:0 10px;position:relative}
+  .tl .ph .d{width:16px;height:16px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);margin-bottom:12px}
+  .tl .ph::before{content:"";position:absolute;top:7px;left:0;right:0;height:2px;background:rgba(255,255,255,.18)}
+  .tl .ph:first-child::before{left:50%}.tl .ph:last-child::before{right:50%}
+  .tl .ph h4{font-size:14px;margin-bottom:3px}.tl .ph p{font-size:12.5px;color:var(--mut)}
+  .ask{display:flex;flex-direction:column;gap:12px}
+  .ask .row{display:flex;gap:14px;align-items:center;background:var(--glass);border:1px solid var(--glassb);border-radius:14px;padding:15px 20px;backdrop-filter:blur(10px)}
+  .ask .row .n{width:32px;height:32px;border-radius:9px;background:linear-gradient(140deg,var(--cobalt),var(--cyan));color:#03031a;font-weight:800;display:grid;place-items:center;flex:none}
+  .ask .row b{color:#fff}.ask .row span{color:var(--mut);font-size:14px}
+  .foot{position:absolute;left:74px;right:74px;bottom:26px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--mut);z-index:5}
+  .dots{display:flex;gap:9px}.dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.22);cursor:pointer;transition:.2s;padding:0}
+  .dots button.on{background:var(--accent);box-shadow:0 0 12px var(--accent);transform:scale(1.25)}
+  .progress{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--cobalt),var(--cyan));z-index:30;transition:width .5s;box-shadow:0 0 12px var(--accent)}
+  .nav{position:fixed;bottom:20px;right:26px;display:flex;gap:9px;z-index:40}
+  .nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--glassb);background:var(--glass);color:#fff;font-size:19px;cursor:pointer;backdrop-filter:blur(8px)}
+  .nav button:hover{background:var(--accent);color:#03031a}
+  .draft{position:fixed;top:16px;left:50%;transform:translateX(-50%);font-size:10.5px;font-weight:800;letter-spacing:.16em;color:var(--accent);border:1px solid var(--glassb);background:var(--glass);padding:5px 12px;border-radius:20px;z-index:20}
+  @media(max-width:820px){.swlayout{grid-template-columns:1fr}.bigletter{display:none}}
+</style>
+</head>
+<body>
+<div class="bg"><div class="blob b1"></div><div class="blob b2"></div></div>
+<div class="grid-ov"></div>
+<div class="draft">● STRATEGIC PLAN · SWOT</div>
+<div class="progress" id="progress"></div>
+
+<div id="deck">
+
+  <!-- 1 COVER -->
+  <section class="slide active" style="justify-content:center">
+    <div class="reveal r1 brand"><img src="assets/medtronic-logo.png" alt="Medtronic"></div>
+    <div style="margin-top:32px">
+      <div class="reveal r1 eyebrow"><span class="bar"></span> Territory Business Review · FY27</div>
+      <h1 class="reveal r2" style="font-size:68px;margin-top:14px">Strategic Plan<span class="grad">.</span></h1>
+      <p class="reveal r3 sub" style="font-size:21px;margin-top:14px">Israel · Ablation. Built on the SWOT model: Strengths, Weaknesses, Opportunities, Threats.</p>
+      <p class="reveal r4 sub" style="margin-top:18px">Prepared by <b style="color:#fff">Ron Shomrat</b></p>
+    </div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span>Internal use only</span></div>
+  </section>
+
+  <!-- 2 STRENGTHS -->
+  <section class="slide">
+    <div class="reveal r1 eyebrow"><span class="bar"></span> Customer SWOT · Israel</div>
+    <h1 class="reveal r1 stitle" style="color:var(--green)">Strengths</h1>
+    <div class="reveal r1 swot-nav"><span class="on">S</span><span>W</span><span>O</span><span>T</span></div>
+    <div class="body">
+      <div class="swlayout">
+        <div class="reveal r2">
+          <div class="stat"><div class="n">100%</div><div class="l">Share of heat (microwave) ablation for liver, kidney, and lung</div></div>
+          <ul class="clean sl-s">
+            <li><b>Leading physicians</b> who use and champion our technology.</li>
+            <li><b>Academic centers of excellence</b>, driven by research and innovation.</li>
+            <li>Strong, trusted relationships across the Medtronic teams.</li>
+            <li>A solid volume base: roughly <b>495 units</b> consumed across Israel in FY26.</li>
+          </ul>
+        </div>
+        <div class="reveal r3 bigletter" style="color:var(--green);opacity:.14">S</div>
+      </div>
+    </div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <!-- 3 WEAKNESSES -->
+  <section class="slide">
+    <div class="reveal r1 eyebrow"><span class="bar"></span> Customer SWOT · Israel</div>
+    <h1 class="reveal r1 stitle" style="color:var(--red)">Weaknesses</h1>
+    <div class="reveal r1 swot-nav"><span>S</span><span class="on">W</span><span>O</span><span>T</span></div>
+    <div class="body">
+      <div class="swlayout">
+        <div class="reveal r2">
+          <ul class="clean sl-w">
+            <li><b>No cryoablation option</b> to counter Boston Scientific, so their cryo entry erodes our share.</li>
+            <li>We are concentrated entirely in heat ablation.</li>
+            <li><b>Shuttle logistics:</b> about ₪132,000 a year shuttling systems to centers with no unit on site <span class="recflag">recommendation</span></li>
+            <li>The Medtronic versus BSC share split is not yet quantified.</li>
+          </ul>
+        </div>
+        <div class="reveal r3 bigletter" style="color:var(--red);opacity:.14">W</div>
+      </div>
+    </div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <!-- 4 OPPORTUNITIES -->
+  <section class="slide">
+    <div class="reveal r1 eyebrow"><span class="bar"></span> Customer SWOT · Hadassah MC</div>
+    <h1 class="reveal r1 stitle" style="color:var(--cyan)">Opportunities</h1>
+    <div class="reveal r1 swot-nav"><span>S</span><span>W</span><span class="on">O</span><span>T</span></div>
+    <div class="body">
+      <div class="swlayout">
+        <div class="reveal r2">
+          <ul class="clean sl-o">
+            <li>The <b>first hands-on ablation classes</b> in Israel.</li>
+            <li>The <b>first dedicated ablation conferences</b> in Israel.</li>
+            <li>Research partnerships as an academic center of excellence.</li>
+            <li>Young physicians who are eager to learn and lead.</li>
+            <li>A shared <b>referral model</b> built with the departments.</li>
+            <li>An international congress, sending our leading physicians.</li>
+            <li>New <b>Clalit codes for Emprint 150W</b> and long-term strategic contracts.</li>
+            <li>A compliant presence in media and marketing.</li>
+          </ul>
+        </div>
+        <div class="reveal r3 bigletter" style="color:var(--cyan);opacity:.14">O</div>
+      </div>
+    </div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <!-- 5 THREATS -->
+  <section class="slide">
+    <div class="reveal r1 eyebrow"><span class="bar"></span> Customer SWOT · Hadassah MC</div>
+    <h1 class="reveal r1 stitle" style="color:var(--amber)">Threats</h1>
+    <div class="reveal r1 swot-nav"><span>S</span><span>W</span><span>O</span><span class="on">T</span></div>
+    <div class="body">
+      <div class="swlayout">
+        <div class="reveal r2">
+          <ul class="clean sl-t">
+            <li>Cryoablation from Boston Scientific.</li>
+            <li>Cryoablation done by surgeons who prefer to keep cases in-house.</li>
+            <li><b>Lower DRG reimbursement</b> compared with cryoablation.</li>
+            <li>War-related delays and cancellations of elective surgery.</li>
+            <li>BSC has built strong ties in the field.</li>
+            <li>Medtechnica is offering better pricing on parts and gas.</li>
+          </ul>
+        </div>
+        <div class="reveal r3 bigletter" style="color:var(--amber);opacity:.14">T</div>
+      </div>
+    </div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <!-- 6 PLAN -->
+  <section class="slide">
+    <div class="reveal r1 eyebrow"><span class="bar"></span> From SWOT to action</div>
+    <h1 class="reveal r1" style="font-size:40px">The FY27 <span class="grad">roadmap</span></h1>
+    <div class="body">
+      <div class="tl reveal r2" style="margin-top:20px">
+        <div class="ph"><div class="d"></div><h4>Journal clubs</h4><p>Build clinical readiness for ablation.</p></div>
+        <div class="ph"><div class="d"></div><h4>Israel ablation event</h4><p>Hosted by Medtronic Israel.</p></div>
+        <div class="ph"><div class="d"></div><h4>Congress delegation</h4><p>Send leading physicians abroad.</p></div>
+        <div class="ph"><div class="d"></div><h4>Contracts and codes</h4><p>Long deals, new Clalit 150W codes.</p></div>
+        <div class="ph"><div class="d"></div><h4>Hands-on classes</h4><p>First in Israel, plus a referral model.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <!-- 7 THE ASK -->
+  <section class="slide">
+    <div class="reveal r1 eyebrow"><span class="bar"></span> FY27 to Y29 · the ask</div>
+    <h1 class="reveal r1" style="font-size:40px">What we want to <span class="grad">commit to</span></h1>
+    <div class="body">
+      <div class="ask reveal r2">
+        <div class="row"><div class="n">1</div><div><b>Protect 100% heat-ablation share</b><br><span>Defend the liver, kidney, and lung franchise against cryo.</span></div></div>
+        <div class="row"><div class="n">2</div><div><b>Stand up hands-on education in Israel</b><br><span>First classes and the first national ablation conference.</span></div></div>
+        <div class="row"><div class="n">3</div><div><b>Fix the economics</b><br><span>Place systems, open Emprint 150W codes, sign long contracts, end shuttle waste.</span></div></div>
+        <div class="row"><div class="n">4</div><div><b>Make the DRG and outcomes case</b><br><span>Give physicians the health-economics argument for heat ablation.</span></div></div>
+        <div class="row"><div class="n">5</div><div><b>Fill the data gaps</b><br><span>Confirm the Medtronic and BSC share split to target effort.</span></div></div>
+      </div>
+    </div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <!-- 8 CLOSE -->
+  <section class="slide" style="justify-content:center">
+    <div class="reveal r1 brand"><img src="assets/medtronic-logo.png" alt="Medtronic"></div>
+    <div style="margin-top:30px">
+      <div class="reveal r1 eyebrow"><span class="bar"></span> In one line</div>
+      <h1 class="reveal r2" style="font-size:48px;margin-top:12px">Own the lead today. <span class="grad">Earn it again tomorrow.</span></h1>
+      <p class="reveal r3 sub" style="font-size:19px;margin-top:16px">Defend with economics, grow with education, and make Israel the model we take to the world.</p>
+      <p class="reveal r4 sub" style="margin-top:16px">Thank you · <b style="color:#fff">Ron Shomrat</b></p>
+    </div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span>Internal use only</span></div>
+  </section>
+
+</div>
+
+<div class="nav"><button id="prev">‹</button><button id="next">›</button></div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')],progress=document.getElementById('progress');let i=0;
+document.querySelectorAll('.dots').forEach(d=>{slides.forEach((_,k)=>{const b=document.createElement('button');b.onclick=()=>show(k);d.appendChild(b);});});
+function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+  progress.style.width=((i+1)/slides.length*100)+'%';
+  document.querySelectorAll('.dots').forEach(d=>[...d.children].forEach((b,k)=>b.classList.toggle('on',k===i)));}
+document.getElementById('next').onclick=()=>show(i+1);
+document.getElementById('prev').onclick=()=>show(i-1);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')show(i+1);else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);});
+show(0);
+</script>
+</body>
+</html>

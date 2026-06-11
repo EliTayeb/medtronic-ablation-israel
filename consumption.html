@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ablation Consumables Consumption · Israel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg0:#05041c;--ink:#eaf0ff;--mut:#9aa3d8;--cobalt:#2b2bff;--cyan:#23e6e6;--violet:#8a6bff;--accent:#23e6e6;
+    --green:#23e6a0;--glass:rgba(255,255,255,.06);--glassb:rgba(255,255,255,.14)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:'Hanken Grotesk',sans-serif;background:var(--bg0);color:var(--ink);overflow:hidden;-webkit-font-smoothing:antialiased}
+  .bg{position:fixed;inset:0;z-index:0;background:
+    radial-gradient(1200px 700px at 78% -10%,#15124f 0,rgba(10,9,66,0) 60%),
+    radial-gradient(900px 600px at 8% 110%,#0c1b55 0,rgba(5,4,28,0) 60%),
+    linear-gradient(160deg,#05041c,#070736 55%,#05041c)}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.4;will-change:transform}
+  .b1{width:500px;height:500px;background:radial-gradient(circle,var(--cobalt),transparent 70%);left:-110px;top:-80px;animation:d1 28s ease-in-out infinite}
+  .b2{width:540px;height:540px;background:radial-gradient(circle,var(--cyan),transparent 70%);right:-140px;top:30%;opacity:.26;animation:d2 34s ease-in-out infinite}
+  @keyframes d1{0%,100%{transform:translate(0,0)}50%{transform:translate(100px,60px)}}
+  @keyframes d2{0%,100%{transform:translate(0,0)}50%{transform:translate(-80px,50px)}}
+  #deck{position:relative;z-index:2;height:100%}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;padding:44px 64px 78px;animation:in .5s cubic-bezier(.2,.7,.2,1)}
+  .slide.active{display:flex}
+  @keyframes in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .reveal{opacity:0;transform:translateY(14px);animation:rv .6s ease forwards}
+  .slide.active .reveal{animation:rv .6s ease forwards}
+  .r1{animation-delay:.05s}.r2{animation-delay:.15s}.r3{animation-delay:.26s}
+  @keyframes rv{to{opacity:1;transform:none}}
+  .brand{display:inline-flex;align-items:center;background:#fff;border-radius:12px;padding:9px 16px;box-shadow:0 10px 30px -12px rgba(0,0,0,.7)}
+  .brand img{height:24px;display:block}
+  .eyebrow{display:flex;align-items:center;gap:11px;font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--accent)}
+  .eyebrow .bar{width:30px;height:2px;background:var(--accent);border-radius:2px;box-shadow:0 0 12px var(--accent)}
+  h1{font-family:'Bricolage Grotesque',sans-serif;font-size:58px;line-height:1;font-weight:800;letter-spacing:-1.1px}
+  h2{font-family:'Bricolage Grotesque',sans-serif;font-size:32px;line-height:1.05;font-weight:700;letter-spacing:-.6px;margin:8px 0 2px}
+  .grad{background:linear-gradient(100deg,#fff,var(--cyan) 50%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{font-size:17px;color:var(--mut);max-width:84ch;line-height:1.5}
+  .head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .stat{background:var(--glass);border:1px solid var(--glassb);border-radius:14px;padding:12px 18px;backdrop-filter:blur(10px);text-align:right;flex:none}
+  .stat .n{font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:800;color:var(--green);line-height:1}
+  .stat .l{font-size:11.5px;color:var(--mut);margin-top:3px}
+  .imgwrap{flex:1;min-height:0;margin-top:18px;display:flex}
+  .imgframe{flex:1;background:#e9f2ff;border:1px solid var(--glassb);border-radius:18px;padding:14px;box-shadow:0 26px 64px -32px #000;display:grid;place-items:center;overflow:hidden}
+  .imgframe img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;cursor:zoom-in;display:block}
+  .cap{font-size:14px;color:var(--mut);margin-top:12px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+  .pill{background:var(--glass);border:1px solid var(--glassb);border-radius:14px;padding:16px 18px;backdrop-filter:blur(10px)}
+  .pill .c{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:var(--cyan)}
+  .pill .v{font-size:13px;color:var(--mut);margin-top:4px}
+  .foot{position:absolute;left:64px;right:64px;bottom:24px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--mut);z-index:5}
+  .dots{display:flex;gap:8px;flex-wrap:wrap}.dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.22);cursor:pointer;transition:.2s;padding:0}
+  .dots button.on{background:var(--accent);box-shadow:0 0 12px var(--accent);transform:scale(1.25)}
+  .progress{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--cobalt),var(--cyan));z-index:30;transition:width .5s;box-shadow:0 0 12px var(--accent)}
+  .nav{position:fixed;bottom:20px;right:26px;display:flex;gap:9px;z-index:40}
+  .nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--glassb);background:var(--glass);color:#fff;font-size:19px;cursor:pointer;backdrop-filter:blur(8px)}
+  .nav button:hover{background:var(--accent);color:#03031a}
+  #lb{position:fixed;inset:0;background:rgba(3,2,20,.93);display:none;place-items:center;z-index:60;cursor:zoom-out;padding:24px}
+  #lb.on{display:grid}#lb img{max-width:96vw;max-height:94vh;border-radius:12px;box-shadow:0 40px 90px -20px #000;background:#e9f2ff}
+</style>
+</head>
+<body>
+<div class="bg"><div class="blob b1"></div><div class="blob b2"></div></div>
+<div class="progress" id="progress"></div>
+
+<div id="deck">
+
+  <!-- 1 COVER -->
+  <section class="slide active" style="justify-content:center">
+    <div class="reveal r1 brand"><img src="assets/medtronic-logo.png" alt="Medtronic"></div>
+    <div style="margin-top:30px">
+      <div class="reveal r1 eyebrow"><span class="bar"></span> Consumption report · Israel</div>
+      <h1 class="reveal r2" style="margin-top:14px">Ablation consumables,<br><span class="grad">the last two years</span></h1>
+      <p class="reveal r3 sub" style="font-size:19px;margin-top:16px">Real consumption of Emprint antennas and Cool-tip RF electrodes across Israel, FY2025 to FY2027, drawn from our internal reporting.</p>
+    </div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span>Internal use only</span></div>
+  </section>
+
+  <!-- 2 OVERVIEW -->
+  <section class="slide">
+    <div class="reveal r1 eyebrow"><span class="bar"></span> What we track</div>
+    <h2 class="reveal r1">Consumption by <span class="grad">product code</span></h2>
+    <p class="reveal r2 sub">Average units per month for each disposable. Emprint antennas drive microwave ablation; Cool-tip electrodes drive RF.</p>
+    <div class="grid reveal r2">
+      <div class="pill"><div class="c">CA15L2</div><div class="v">Emprint short antenna, 15 cm. Avg 22.58 / month.</div></div>
+      <div class="pill"><div class="c">CA20L2</div><div class="v">Emprint standard antenna, 20 cm. Avg 6.75 / month.</div></div>
+      <div class="pill"><div class="c">CA30L2</div><div class="v">Emprint long antenna, 30 cm. Avg 2.75 / month.</div></div>
+      <div class="pill"><div class="c">RFA1510</div><div class="v">Cool-tip RF electrode, 15 cm. Avg 7.92 / month.</div></div>
+      <div class="pill"><div class="c">RFA1507</div><div class="v">Cool-tip RF electrode, 14.5 cm. Avg 1.64 / month.</div></div>
+      <div class="pill"><div class="c">RFA1530</div><div class="v">Cool-tip RF electrode, 15 cm / 3 cm tip. Avg 1.25 / month.</div></div>
+      <div class="pill"><div class="c">RFA1520</div><div class="v">Cool-tip RF electrode, 15 cm / 2 cm tip. Avg 0.25 / month.</div></div>
+      <div class="pill"><div class="c">Revenue</div><div class="v">Quarterly trend, peaking at $350,564 in Q4 FY2026.</div></div>
+    </div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <!-- IMAGE SLIDES -->
+  <section class="slide" data-img="assets/consumption/consumption-1.png">
+    <div class="reveal r1 head">
+      <div><div class="eyebrow"><span class="bar"></span> Emprint antenna · CA15L2</div><h2>Short antenna, 15 cm</h2></div>
+      <div class="stat"><div class="n">22.58</div><div class="l">avg units / month</div></div>
+    </div>
+    <div class="reveal r2 imgwrap"><div class="imgframe"><img src="assets/consumption/consumption-1.png" alt="CA15L2 consumption"></div></div>
+    <div class="reveal r3 cap">Our highest-volume Emprint antenna. Clear peaks of 71 units in Feb and Apr 2026.</div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <section class="slide" data-img="assets/consumption/consumption-2.png">
+    <div class="reveal r1 head">
+      <div><div class="eyebrow"><span class="bar"></span> Emprint antenna · CA20L2</div><h2>Standard antenna, 20 cm</h2></div>
+      <div class="stat"><div class="n">6.75</div><div class="l">avg units / month</div></div>
+    </div>
+    <div class="reveal r2 imgwrap"><div class="imgframe"><img src="assets/consumption/consumption-2.png" alt="CA20L2 consumption"></div></div>
+    <div class="reveal r3 cap">Steady demand, rising to 20 units in April 2026.</div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <section class="slide" data-img="assets/consumption/consumption-3.png">
+    <div class="reveal r1 head">
+      <div><div class="eyebrow"><span class="bar"></span> Emprint antenna · CA30L2</div><h2>Long antenna, 30 cm</h2></div>
+      <div class="stat"><div class="n">2.75</div><div class="l">avg units / month</div></div>
+    </div>
+    <div class="reveal r2 imgwrap"><div class="imgframe"><img src="assets/consumption/consumption-3.png" alt="CA30L2 consumption"></div></div>
+    <div class="reveal r3 cap">A specialty antenna with lower, occasional use.</div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <section class="slide" data-img="assets/consumption/consumption-5.png">
+    <div class="reveal r1 head">
+      <div><div class="eyebrow"><span class="bar"></span> Cool-tip RF · RFA1510</div><h2>RF electrode, 15 cm</h2></div>
+      <div class="stat"><div class="n">7.92</div><div class="l">avg units / month</div></div>
+    </div>
+    <div class="reveal r2 imgwrap"><div class="imgframe"><img src="assets/consumption/consumption-5.png" alt="RFA1510 consumption"></div></div>
+    <div class="reveal r3 cap">The lead RF electrode, peaking at 22 units in April 2026.</div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <section class="slide" data-img="assets/consumption/consumption-4.png">
+    <div class="reveal r1 head">
+      <div><div class="eyebrow"><span class="bar"></span> Cool-tip RF · RFA1507</div><h2>RF electrode, 14.5 cm</h2></div>
+      <div class="stat"><div class="n">1.64</div><div class="l">avg units / month</div></div>
+    </div>
+    <div class="reveal r2 imgwrap"><div class="imgframe"><img src="assets/consumption/consumption-4.png" alt="RFA1507 consumption"></div></div>
+    <div class="reveal r3 cap">Lower-volume RF electrode with steady, occasional demand.</div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <section class="slide" data-img="assets/consumption/consumption-7.png">
+    <div class="reveal r1 head">
+      <div><div class="eyebrow"><span class="bar"></span> Cool-tip RF · RFA1530</div><h2>RF electrode, 15 cm, 3 cm tip</h2></div>
+      <div class="stat"><div class="n">1.25</div><div class="l">avg units / month</div></div>
+    </div>
+    <div class="reveal r2 imgwrap"><div class="imgframe"><img src="assets/consumption/consumption-7.png" alt="RFA1530 consumption"></div></div>
+    <div class="reveal r3 cap">New demand appearing through early 2026.</div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <section class="slide" data-img="assets/consumption/consumption-6.png">
+    <div class="reveal r1 head">
+      <div><div class="eyebrow"><span class="bar"></span> Cool-tip RF · RFA1520</div><h2>RF electrode, 15 cm, 2 cm tip</h2></div>
+      <div class="stat"><div class="n">0.25</div><div class="l">avg units / month</div></div>
+    </div>
+    <div class="reveal r2 imgwrap"><div class="imgframe"><img src="assets/consumption/consumption-6.png" alt="RFA1520 consumption"></div></div>
+    <div class="reveal r3 cap">Rarely used. A single unit recorded in Feb 2026.</div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <section class="slide" data-img="assets/consumption/consumption-8.png">
+    <div class="reveal r1 head">
+      <div><div class="eyebrow"><span class="bar"></span> Quarterly revenue</div><h2>Consumables revenue trend</h2></div>
+      <div class="stat"><div class="n">$350,564</div><div class="l">peak, Q4 FY2026</div></div>
+    </div>
+    <div class="reveal r2 imgwrap"><div class="imgframe"><img src="assets/consumption/consumption-8.png" alt="Quarterly revenue"></div></div>
+    <div class="reveal r3 cap">FY2026 by quarter and FY2027 Q1. Strong Q4 close, then the seasonal reset into the new fiscal year.</div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+</div>
+
+<div id="lb"><img src="" alt="expanded"></div>
+<div class="nav"><button id="prev">‹</button><button id="next">›</button></div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')],progress=document.getElementById('progress');let i=0;
+document.querySelectorAll('.dots').forEach(d=>{slides.forEach((_,k)=>{const b=document.createElement('button');b.onclick=()=>show(k);d.appendChild(b);});});
+function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+  progress.style.width=((i+1)/slides.length*100)+'%';
+  document.querySelectorAll('.dots').forEach(d=>[...d.children].forEach((b,k)=>b.classList.toggle('on',k===i)));}
+document.getElementById('next').onclick=()=>show(i+1);
+document.getElementById('prev').onclick=()=>show(i-1);
+const lb=document.getElementById('lb');
+document.querySelectorAll('.imgframe img').forEach(img=>img.addEventListener('click',()=>{lb.querySelector('img').src=img.src;lb.classList.add('on');}));
+lb.addEventListener('click',()=>lb.classList.remove('on'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on');else if(e.key==='ArrowRight'||e.key==='PageDown')show(i+1);else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);});
+show(0);
+</script>
+</body>
+</html>
