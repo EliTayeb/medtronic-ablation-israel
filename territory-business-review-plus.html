@@ -9,14 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{--bg0:#05041c;--ink:#eaf0ff;--mut:#9aa3d8;--cobalt:#2b2bff;--cyan:#23e6e6;--violet:#8a6bff;--accent:#23e6e6;
-    --green:#23e6a0;--amber:#f0a93a;--red:#ff6b6b;--glass:rgba(255,255,255,.06);--glassb:rgba(255,255,255,.14)}
+    --green:#23e6a0;--amber:#f0a93a;--red:#ff6b6b;--glass:rgba(255,255,255,.06);--glassb:rgba(255,255,255,.14);
+    --bgimg:radial-gradient(1200px 700px at 78% -10%,#15124f 0,rgba(10,9,66,0) 60%),radial-gradient(900px 600px at 8% 110%,#0c1b55 0,rgba(5,4,28,0) 60%),linear-gradient(160deg,#05041c,#070736 55%,#05041c)}
+  html[data-shade="lighter"]{--bg0:#0e0f33;--mut:#a6aee0;
+    --bgimg:radial-gradient(1200px 700px at 78% -10%,#26226c 0,rgba(38,34,108,0) 60%),radial-gradient(900px 600px at 8% 110%,#1a2e72 0,rgba(14,15,51,0) 60%),linear-gradient(160deg,#0e0f33,#16165c 55%,#0e0f33)}
+  html[data-shade="lightest"]{--bg0:#1b1d4d;--ink:#eef2ff;--mut:#b3bbe8;--glass:rgba(255,255,255,.07);--glassb:rgba(255,255,255,.16);
+    --bgimg:radial-gradient(1200px 700px at 78% -10%,#363183 0,rgba(54,49,131,0) 60%),radial-gradient(900px 600px at 8% 110%,#274093 0,rgba(27,29,77,0) 60%),linear-gradient(160deg,#1b1d4d,#262680 55%,#1b1d4d)}
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
   body{font-family:'Hanken Grotesk',sans-serif;background:var(--bg0);color:var(--ink);overflow:hidden;-webkit-font-smoothing:antialiased}
-  .bg{position:fixed;inset:0;z-index:0;background:
-    radial-gradient(1200px 700px at 78% -10%,#15124f 0,rgba(10,9,66,0) 60%),
-    radial-gradient(900px 600px at 8% 110%,#0c1b55 0,rgba(5,4,28,0) 60%),
-    linear-gradient(160deg,#05041c,#070736 55%,#05041c)}
+  .bg{position:fixed;inset:0;z-index:0;background:var(--bgimg);transition:background .4s ease}
   .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.42;will-change:transform}
   .b1{width:520px;height:520px;background:radial-gradient(circle,var(--cobalt),transparent 70%);left:-120px;top:-90px;animation:d1 28s ease-in-out infinite}
   .b2{width:560px;height:560px;background:radial-gradient(circle,var(--violet),transparent 70%);right:-150px;top:25%;opacity:.3;animation:d2 34s ease-in-out infinite}
@@ -55,8 +57,8 @@
   .swot-nav span{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);
     border:1px solid var(--glassb);border-radius:20px;padding:5px 13px}
   .swot-nav span.on{color:#03031a;background:var(--accent);border-color:var(--accent)}
-  .swlayout{display:grid;grid-template-columns:1.35fr .65fr;gap:34px;align-items:center;height:100%}
-  .bigletter{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:300px;line-height:.78;letter-spacing:-12px;text-align:center;user-select:none}
+  .swlayout{display:grid;grid-template-columns:1fr .92fr;gap:24px;align-items:center;height:100%}
+  .bigletter{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(420px,46vw,680px);line-height:.74;letter-spacing:-18px;text-align:center;user-select:none}
   ul.clean{list-style:none;display:flex;flex-direction:column;gap:13px}
   ul.clean li{position:relative;padding-left:28px;font-size:17px;line-height:1.5}
   ul.clean li::before{content:"";position:absolute;left:0;top:8px;width:11px;height:11px;border-radius:3px;background:var(--accent);box-shadow:0 0 10px var(--accent)}
@@ -105,11 +107,12 @@
 <style>.backhome{position:fixed;top:18px;left:22px;z-index:45;display:inline-flex;align-items:center;gap:7px;font:700 12.5px/1 'Hanken Grotesk','Segoe UI',sans-serif;color:#fff;text-decoration:none;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:9px 15px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px -8px rgba(0,0,0,.5);transition:background .18s,color .18s}.backhome:hover{background:#23e6e6;color:#03031a;border-color:#23e6e6}</style>
 <div class="vswitch">
   <span>Shade</span>
-  <a href="territory-business-review-plus.html" class="on">Dark</a>
-  <a href="territory-business-review-plus-lighter.html">Lighter</a>
-  <a href="territory-business-review-plus-lightest.html">Lightest</a>
+  <button type="button" data-shade="dark">Dark</button>
+  <button type="button" data-shade="lighter">Lighter</button>
+  <button type="button" data-shade="lightest">Lightest</button>
 </div>
-<style>.vswitch{position:fixed;top:16px;right:26px;z-index:45;display:inline-flex;align-items:center;gap:5px;font:700 11px/1 'Hanken Grotesk','Segoe UI',sans-serif;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:30px;padding:6px 7px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px -8px rgba(0,0,0,.5)}.vswitch span{color:var(--mut);letter-spacing:.14em;text-transform:uppercase;padding:0 5px}.vswitch a{color:#fff;text-decoration:none;padding:5px 11px;border-radius:20px;transition:background .18s,color .18s}.vswitch a:hover{background:rgba(255,255,255,.14)}.vswitch a.on{background:var(--accent);color:#03031a}</style>
+<style>.vswitch{position:fixed;top:16px;right:26px;z-index:45;display:inline-flex;align-items:center;gap:5px;font:700 11px/1 'Hanken Grotesk','Segoe UI',sans-serif;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:30px;padding:6px 7px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px -8px rgba(0,0,0,.5)}.vswitch span{color:var(--mut);letter-spacing:.14em;text-transform:uppercase;padding:0 5px}.vswitch button{font:inherit;color:#fff;background:none;border:none;cursor:pointer;padding:5px 11px;border-radius:20px;transition:background .18s,color .18s}.vswitch button:hover{background:rgba(255,255,255,.14)}.vswitch button.on{background:var(--accent);color:#03031a}</style>
+<script>(function(){var r=document.documentElement,sw=document.querySelector('.vswitch');function set(s){r.setAttribute('data-shade',s);try{localStorage.setItem('deckShade',s)}catch(e){}sw.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.shade===s)})}sw.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){set(b.dataset.shade)})});var s='lighter';try{s=localStorage.getItem('deckShade')||'lighter'}catch(e){}set(s)})();</script>
 <div class="bg"><div class="blob b1"></div><div class="blob b2"></div></div>
 <div class="grid-ov"></div>
 <div class="draft">● STRATEGIC PLAN · SWOT</div>

@@ -16,7 +16,12 @@
     --cobalt:#3a3aff; --cobalt2:#5d66ff; --cyan:#34f0f0; --violet:#a98bff; --accent:#34f0f0;
     --glass:rgba(255,255,255,.10); --glassb:rgba(255,255,255,.24);
     --card-sh:0 24px 60px -30px rgba(0,0,0,.7);
+    --bgimg:radial-gradient(1300px 760px at 75% -10%, #2b289a 0%, rgba(20,18,90,0) 62%),radial-gradient(1000px 660px at 10% 110%, #173a8f 0%, rgba(12,12,61,0) 62%),linear-gradient(160deg,#0c0c3d 0%,#141466 55%,#0c0c3d 100%);
   }
+  html[data-shade="lighter"]{--bg0:#16165e;
+    --bgimg:radial-gradient(1300px 760px at 75% -10%, #353199 0%, rgba(33,30,110,0) 62%),radial-gradient(1000px 660px at 10% 110%, #21459c 0%, rgba(22,22,94,0) 62%),linear-gradient(160deg,#16165e 0%,#20206f 55%,#16165e 100%)}
+  html[data-shade="lightest"]{--bg0:#232370;--glass:rgba(255,255,255,.12);--glassb:rgba(255,255,255,.28);
+    --bgimg:radial-gradient(1300px 760px at 75% -10%, #423ea8 0%, rgba(46,42,140,0) 62%),radial-gradient(1000px 660px at 10% 110%, #2c4aa6 0%, rgba(35,35,112,0) 62%),linear-gradient(160deg,#232370 0%,#2d2d88 55%,#232370 100%)}
   body.t2{--accent:#ff5cae; --cyan:#ff5cae; --violet:#ff8fce;}
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
@@ -24,10 +29,7 @@
     background:var(--bg0);color:var(--ink);overflow:hidden;-webkit-font-smoothing:antialiased}
 
   /* ===== animated aurora background ===== */
-  .bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:
-    radial-gradient(1300px 760px at 75% -10%, #2b289a 0%, rgba(20,18,90,0) 62%),
-    radial-gradient(1000px 660px at 10% 110%, #173a8f 0%, rgba(12,12,61,0) 62%),
-    linear-gradient(160deg,#0c0c3d 0%,#141466 55%,#0c0c3d 100%)}
+  .bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:var(--bgimg);transition:background .4s ease}
   .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.6;will-change:transform}
   .b1{width:560px;height:560px;background:radial-gradient(circle at 30% 30%,var(--cobalt),transparent 70%);
     left:-120px;top:-100px;animation:drift1 26s ease-in-out infinite}
@@ -264,6 +266,14 @@
 <body>
   <a class="backhome" href="index.html" title="Back to all presentations">⌂ All decks</a>
   <style>.backhome{position:fixed;top:18px;left:22px;z-index:45;display:inline-flex;align-items:center;gap:7px;font:700 12.5px/1 'Hanken Grotesk','Segoe UI',sans-serif;color:#fff;text-decoration:none;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:9px 15px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px -8px rgba(0,0,0,.5);transition:background .18s,color .18s}.backhome:hover{background:#23e6e6;color:#03031a;border-color:#23e6e6}</style>
+  <div class="vswitch">
+    <span>Shade</span>
+    <button type="button" data-shade="dark">Dark</button>
+    <button type="button" data-shade="lighter">Lighter</button>
+    <button type="button" data-shade="lightest">Lightest</button>
+  </div>
+  <style>.vswitch{position:fixed;top:16px;right:26px;z-index:45;display:inline-flex;align-items:center;gap:5px;font:700 11px/1 'Hanken Grotesk','Segoe UI',sans-serif;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:30px;padding:6px 7px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px -8px rgba(0,0,0,.5)}.vswitch span{color:var(--mut);letter-spacing:.14em;text-transform:uppercase;padding:0 5px}.vswitch button{font:inherit;color:#fff;background:none;border:none;cursor:pointer;padding:5px 11px;border-radius:20px;transition:background .18s,color .18s}.vswitch button:hover{background:rgba(255,255,255,.14)}.vswitch button.on{background:var(--accent);color:#03031a}</style>
+  <script>(function(){var r=document.documentElement,sw=document.querySelector('.vswitch');function set(s){r.setAttribute('data-shade',s);try{localStorage.setItem('deckShade',s)}catch(e){}sw.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.shade===s)})}sw.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){set(b.dataset.shade)})});var s='lighter';try{s=localStorage.getItem('deckShade')||'lighter'}catch(e){}set(s)})();</script>
   <div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
   <div class="grid-ov"></div>
   <span class="spark" style="left:18%;animation-duration:14s;animation-delay:0s"></span>
@@ -681,7 +691,18 @@ function show(n){
   document.querySelectorAll('.dots').forEach(d=>{[...d.children].forEach((b,k)=>b.classList.toggle('on',k===i));});
   if(i===1){ animateStats(); }
   if(i===2){ initMap(); setTimeout(()=>{ if(map) map.invalidateSize(); },240); }
+  /* update URL hash for shareable links and refresh persistence */
+  window.location.hash='slide='+i;
 }
+/* read hash on load and navigate to that slide */
+function loadSlideFromHash(){
+  const hash=window.location.hash.slice(1);
+  const match=hash.match(/slide=(\d+)/);
+  const slideNum=match?parseInt(match[1],10):0;
+  show(slideNum);
+}
+/* handle browser back/forward */
+window.addEventListener('hashchange',loadSlideFromHash);
 document.getElementById('next').onclick=()=>show(i+1);
 document.getElementById('prev').onclick=()=>show(i-1);
 document.addEventListener('keydown',e=>{
@@ -753,7 +774,7 @@ function scramble(el){
 }
 document.querySelectorAll('.grad').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();scramble(el);}));
 
-show(0);
+loadSlideFromHash();
 </script>
 </body>
 </html>
