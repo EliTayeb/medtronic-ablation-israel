@@ -33,7 +33,16 @@
   a.card.feat h2{font-size:28px}
   .subhead{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#9fd9db;margin:24px 0 14px;font-weight:600}
   .foot{margin-top:38px;font-size:12.5px;color:#8a90cf}
-  @media(max-width:760px){.cards{grid-template-columns:1fr}h1{font-size:38px}}
+  /* vision colour options */
+  .c5{grid-template-columns:repeat(5,1fr)}
+  a.theme-card{padding:16px 16px 18px}
+  a.theme-card h2{font-size:17px;margin-bottom:5px}
+  a.theme-card p{font-size:12.5px;line-height:1.45}
+  a.theme-card .go{margin-top:11px;font-size:13px}
+  .swatch{height:60px;border-radius:12px;margin-bottom:13px;border:1px solid rgba(255,255,255,.25);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.06), 0 8px 20px -12px rgba(0,0,0,.6)}
+  @media(max-width:1024px){.c5{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:760px){.cards{grid-template-columns:1fr}.c5{grid-template-columns:1fr 1fr}h1{font-size:38px}}
 </style>
 </head>
 <body>
@@ -63,6 +72,46 @@
         <h2>Consumables Consumption</h2>
         <p>The last two years of Emprint antenna and Cool-tip electrode consumption in Israel, by product code, with the quarterly revenue trend.</p>
         <div class="go">Open the report →</div>
+      </a>
+    </div>
+
+    <div class="subhead">Vision deck · light colour options</div>
+    <p class="lead" style="margin-bottom:18px;font-size:15.5px">Five light redesigns of the vision deck — same content and interactions, five distinct colour worlds. Pick the look you like best.</p>
+    <div class="cards c5">
+      <a class="card sm theme-card" href="vision-clinical-white.html">
+        <div class="swatch" style="background:linear-gradient(120deg,#ffffff 0%,#eaf0ff 42%,#1a3df0 72%,#00b3b8 100%)"></div>
+        <span class="tag">01 · Clinical White</span>
+        <h2>Clinical White</h2>
+        <p>Swiss minimal: crisp white, Medtronic cobalt, hairline rules and draw-in heading underlines.</p>
+        <div class="go">Open →</div>
+      </a>
+      <a class="card sm theme-card" href="vision-warm-paper.html">
+        <div class="swatch" style="background:linear-gradient(120deg,#fbf6ee 0%,#f3e6d6 38%,#ef5b4c 72%,#14213d 100%)"></div>
+        <span class="tag">02 · Warm Paper</span>
+        <h2>Warm Paper</h2>
+        <p>Editorial magazine: ivory paper, serif display, coral marker-highlights and drop-caps.</p>
+        <div class="go">Open →</div>
+      </a>
+      <a class="card sm theme-card" href="vision-mint-glass.html">
+        <div class="swatch" style="background:linear-gradient(120deg,#eafcf5 0%,#dff3ff 40%,#12b886 72%,#2aa8e0 100%)"></div>
+        <span class="tag">03 · Mint Glass</span>
+        <h2>Mint Glass</h2>
+        <p>Fresh glassmorphism: mint-to-aqua, frosted cards and soft emerald pill highlights.</p>
+        <div class="go">Open →</div>
+      </a>
+      <a class="card sm theme-card" href="vision-sunrise.html">
+        <div class="swatch" style="background:linear-gradient(120deg,#ffe8d6 0%,#ece4ff 45%,#ff4d8d 78%,#7b5cff 100%)"></div>
+        <span class="tag">04 · Sunrise Pastel</span>
+        <h2>Sunrise Pastel</h2>
+        <p>Playful pastel gradient with magenta keywords and an animated highlight sweep on headings.</p>
+        <div class="go">Open →</div>
+      </a>
+      <a class="card sm theme-card" href="vision-blueprint.html">
+        <div class="swatch" style="background:linear-gradient(120deg,#eef2f7 0%,#d6e0ef 38%,#2563ff 74%,#102a43 100%)"></div>
+        <span class="tag">05 · Blueprint</span>
+        <h2>Blueprint</h2>
+        <p>Technical drafting: slate grid, monospace labels, corner ticks and schematic keyword boxes.</p>
+        <div class="go">Open →</div>
       </a>
     </div>
 
