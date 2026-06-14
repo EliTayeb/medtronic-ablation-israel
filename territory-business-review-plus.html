@@ -28,7 +28,7 @@
     background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
     background-size:54px 54px;mask-image:radial-gradient(circle at 50% 40%,#000 30%,transparent 80%)}
   #deck{position:relative;z-index:2;height:100%}
-  .slide{position:absolute;inset:0;display:none;flex-direction:column;padding:54px 74px 88px;animation:in .55s cubic-bezier(.2,.7,.2,1)}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;padding:48px 74px 78px;animation:in .55s cubic-bezier(.2,.7,.2,1)}
   .slide.active{display:flex}
   @keyframes in{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
   .reveal{opacity:0;transform:translateY(15px);animation:rv .65s ease forwards}
@@ -47,29 +47,29 @@
   .eyebrow{display:flex;align-items:center;gap:11px;font-size:12px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--accent)}
   .eyebrow .bar{width:32px;height:2px;background:var(--accent);border-radius:2px;box-shadow:0 0 12px var(--accent)}
   h1{font-family:'Bricolage Grotesque',sans-serif;font-size:60px;line-height:1;font-weight:800;letter-spacing:-1.2px}
-  .stitle{font-family:'Bricolage Grotesque',sans-serif;font-size:64px;line-height:1;font-weight:800;letter-spacing:-1.4px;margin:10px 0 4px}
+  .stitle{font-family:'Bricolage Grotesque',sans-serif;font-size:56px;line-height:1;font-weight:800;letter-spacing:-1.4px;margin:8px 0 2px}
   .grad{background:linear-gradient(100deg,#fff,var(--cyan) 50%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
   .sub{font-size:18px;color:var(--mut);max-width:80ch;line-height:1.55}
-  .body{flex:1;min-height:0;overflow:auto;margin-top:14px;display:flex;flex-direction:column;justify-content:center}
+  .body{flex:1;min-height:0;overflow:hidden;margin-top:12px;display:flex;flex-direction:column;justify-content:center}
   .body::-webkit-scrollbar{width:8px}.body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:8px}
   /* SWOT stepper */
   .swot-nav{display:flex;gap:10px;margin-top:10px}
   .swot-nav span{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);
     border:1px solid var(--glassb);border-radius:20px;padding:5px 13px}
   .swot-nav span.on{color:#03031a;background:var(--accent);border-color:var(--accent)}
-  .swlayout{display:grid;grid-template-columns:1fr .92fr;gap:24px;align-items:center;height:100%}
+  .swlayout{display:grid;grid-template-columns:1fr .92fr;gap:20px;align-items:center;height:100%}
   .bigletter{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(420px,46vw,680px);line-height:.74;letter-spacing:-18px;text-align:center;user-select:none}
-  ul.clean{list-style:none;display:flex;flex-direction:column;gap:13px}
-  ul.clean li{position:relative;padding-left:28px;font-size:17px;line-height:1.5}
+  ul.clean{list-style:none;display:flex;flex-direction:column;gap:10px}
+  ul.clean li{position:relative;padding-left:28px;font-size:18px;line-height:1.4}
   ul.clean li::before{content:"";position:absolute;left:0;top:8px;width:11px;height:11px;border-radius:3px;background:var(--accent);box-shadow:0 0 10px var(--accent)}
   ul.clean li b{color:#fff}
   .sl-s li::before{background:var(--green);box-shadow:0 0 10px var(--green)}
   .sl-w li::before{background:var(--red);box-shadow:0 0 10px var(--red)}
   .sl-o li::before{background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
   .sl-t li::before{background:var(--amber);box-shadow:0 0 10px var(--amber)}
-  .stat{display:inline-block;background:var(--glass);border:1px solid var(--glassb);border-radius:16px;padding:18px 22px;backdrop-filter:blur(10px);margin-bottom:14px}
-  .stat .n{font-family:'Bricolage Grotesque',sans-serif;font-size:44px;font-weight:800;line-height:1;color:var(--green)}
-  .stat .l{font-size:13px;color:var(--mut);margin-top:5px;max-width:30ch}
+  .stat{display:inline-block;background:var(--glass);border:1px solid var(--glassb);border-radius:16px;padding:16px 20px;backdrop-filter:blur(10px);margin-bottom:10px}
+  .stat .n{font-family:'Bricolage Grotesque',sans-serif;font-size:48px;font-weight:800;line-height:1;color:var(--green)}
+  .stat .l{font-size:14px;color:var(--mut);margin-top:6px;max-width:30ch}
   .recflag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:rgba(35,230,160,.16);color:var(--green);padding:3px 10px;border-radius:20px;margin-left:8px;vertical-align:middle}
   .tl{display:flex;gap:0;margin-top:10px}
   .tl .ph{flex:1;padding:0 10px;position:relative}
@@ -104,6 +104,11 @@
 </head>
 <body>
 <a class="backhome" href="index.html" title="Back to all presentations">⌂ All decks</a>
+<a class="backhome" href="vision.html" title="Go to strategy menu" style="left:152px">📊 Strategy</a>
+<style>
+  .backhome{position:fixed;top:18px;left:24px;z-index:45;display:inline-flex;align-items:center;gap:7px;font:700 12.5px/1 'Hanken Grotesk','Segoe UI',sans-serif;color:#fff;text-decoration:none;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:9px 15px;backdrop-filter:blur(8px);box-shadow:0 6px 18px -8px rgba(0,0,0,.5);transition:background .18s,color .18s}
+  .backhome:hover{background:var(--cyan);color:#03031a;border-color:var(--cyan)}
+</style>
 <style>.backhome{position:fixed;top:18px;left:22px;z-index:45;display:inline-flex;align-items:center;gap:7px;font:700 12.5px/1 'Hanken Grotesk','Segoe UI',sans-serif;color:#fff;text-decoration:none;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:9px 15px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px -8px rgba(0,0,0,.5);transition:background .18s,color .18s}.backhome:hover{background:#23e6e6;color:#03031a;border-color:#23e6e6}</style>
 <div class="vswitch">
   <span>Shade</span>
@@ -146,6 +151,7 @@
             <li><b>Academic centers of excellence</b>, driven by research and innovation.</li>
             <li>Strong, trusted relationships across the Medtronic teams.</li>
             <li>A solid volume base: roughly <b>495 units</b> consumed across Israel in FY26.</li>
+            <li><b>100% market share in Liver Ablation</b>.</li>
           </ul>
         </div>
         <div class="reveal r3 bigletter" style="color:var(--green);opacity:.14">S</div>
@@ -165,7 +171,8 @@
           <ul class="clean sl-w">
             <li><b>No cryoablation option</b> to counter Boston Scientific, so their cryo entry erodes our share.</li>
             <li>We are concentrated entirely in heat ablation.</li>
-            <li><b>Shuttle logistics:</b> we shuttle systems to centers with no unit on site, about ₪4,000 per transfer that we can save by placing a system <span class="recflag">recommendation</span></li>
+            <li><b>Shuttle logistics:</b> we shuttle systems to centers with no unit on site, about $1,200 per shipment to MC that we can save by placing a system <span class="recflag">recommendation</span></li>
+            <li>When Capital is back to the lab it takes 3 days of process and with 2 systems sometimes, we must move surgeries or cancel.</li>
             <li>The Medtronic versus BSC share split is not yet quantified.</li>
           </ul>
         </div>
@@ -177,21 +184,19 @@
 
   <!-- 4 OPPORTUNITIES -->
   <section class="slide">
-    <div class="reveal r1 eyebrow"><span class="bar"></span> Customer SWOT · Hadassah MC</div>
+    <div class="reveal r1 eyebrow"><span class="bar"></span> Customer SWOT · Israel</div>
     <h1 class="reveal r1 stitle" style="color:var(--cyan)">Opportunities</h1>
     <div class="reveal r1 swot-nav"><span>S</span><span>W</span><span class="on">O</span><span>T</span></div>
     <div class="body">
       <div class="swlayout">
         <div class="reveal r2">
           <ul class="clean sl-o">
-            <li>The <b>first hands-on ablation classes</b> in Israel.</li>
-            <li>The <b>first dedicated ablation conferences</b> in Israel.</li>
             <li>Research partnerships as an academic center of excellence.</li>
             <li>Young physicians who are eager to learn and lead.</li>
             <li>A shared <b>referral model</b> built with the departments.</li>
-            <li>An international congress, sending our leading physicians.</li>
-            <li>New <b>Clalit codes for Emprint 150W</b> and long-term strategic contracts.</li>
-            <li>A compliant presence in media and marketing.</li>
+            <li>New <b>Clalit codes for Emprint 150W</b>.</li>
+            <li>Long-term strategic contracts.</li>
+            <li>Increase awareness to Family doctors and patients.</li>
           </ul>
         </div>
         <div class="reveal r3 bigletter" style="color:var(--cyan);opacity:.14">O</div>
@@ -202,7 +207,7 @@
 
   <!-- 5 THREATS -->
   <section class="slide">
-    <div class="reveal r1 eyebrow"><span class="bar"></span> Customer SWOT · Hadassah MC</div>
+    <div class="reveal r1 eyebrow"><span class="bar"></span> Customer SWOT · Israel</div>
     <h1 class="reveal r1 stitle" style="color:var(--amber)">Threats</h1>
     <div class="reveal r1 swot-nav"><span>S</span><span>W</span><span>O</span><span class="on">T</span></div>
     <div class="body">
@@ -218,6 +223,46 @@
           </ul>
         </div>
         <div class="reveal r3 bigletter" style="color:var(--amber);opacity:.14">T</div>
+      </div>
+    </div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <!-- 5.5 ACTION -->
+  <section class="slide">
+    <div class="reveal r1 eyebrow"><span class="bar"></span> From SWOT to action</div>
+    <h1 class="reveal r1 stitle" style="color:var(--cyan)">Action</h1>
+    <div class="reveal r1 swot-nav"><span>S</span><span>W</span><span>O</span><span>T</span></div>
+    <div class="body">
+      <div class="swlayout">
+        <div class="reveal r2">
+          <ul class="clean sl-o">
+            <li>The <b>first hands-on ablation classes</b> in Israel.</li>
+            <li>The <b>first dedicated ablation conferences</b> in Israel.</li>
+            <li>An international congress, sending our leading physicians.</li>
+          </ul>
+        </div>
+        <div class="reveal r3 bigletter" style="color:var(--cyan);opacity:.14">A</div>
+      </div>
+    </div>
+    <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
+  </section>
+
+  <!-- 5.6 NEEDS -->
+  <section class="slide">
+    <div class="reveal r1 eyebrow"><span class="bar"></span> To succeed</div>
+    <h1 class="reveal r1 stitle" style="color:#ff8fce">Needs</h1>
+    <div class="reveal r1 swot-nav"><span>S</span><span>W</span><span>O</span><span>T</span></div>
+    <div class="body">
+      <div class="swlayout">
+        <div class="reveal r2">
+          <ul class="clean" style="gap:12px">
+            <li style="color:var(--accent)"><b>Extra budget for marketing</b><br><span style="color:var(--mut);font-size:14px">We haven't invested any marketing budget in Israel for ablation treatments — this is our opportunity to build awareness.</span></li>
+            <li style="color:var(--accent)"><b>More capital equipment</b><br><span style="color:var(--mut);font-size:14px">Microwave ablation and RF ablation systems to place at strategic centers, reducing dependency on shuttle logistics.</span></li>
+            <li style="color:var(--accent)"><b>Solution for shipment costs</b><br><span style="color:var(--mut);font-size:14px">Eliminate the current ~$1,200 per shipment burden through equipment placement and optimized logistics.</span></li>
+          </ul>
+        </div>
+        <div class="reveal r3 bigletter" style="color:#ff8fce;opacity:.14">N</div>
       </div>
     </div>
     <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
