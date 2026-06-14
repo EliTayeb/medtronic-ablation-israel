@@ -10,7 +10,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;background:var(--navy);color:var(--ink);overflow:hidden}
   #deck{position:fixed;inset:0}
-  .slide{position:absolute;inset:0;display:none;flex-direction:column;padding:52px 68px 78px;background:var(--bg);animation:fade .45s ease}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;padding:60px 68px 78px;background:var(--bg);animation:fade .45s ease}
   .slide.active{display:flex}
   @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
   .cover{background:linear-gradient(135deg,#06063a 0%,#10108f 55%,#1010eb 100%);color:#fff;justify-content:center;position:relative;overflow:hidden}
@@ -95,7 +95,6 @@
 </style>
 </head>
 <body>
-<div class="draft">● DRAFT</div>
 <a class="backhome" href="index.html" title="Back to all presentations">⌂ All decks</a>
 <style>
   .backhome{position:fixed;top:18px;left:24px;z-index:45;display:inline-flex;align-items:center;gap:7px;font:700 12.5px/1 'Segoe UI',sans-serif;color:#fff;text-decoration:none;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:9px 15px;backdrop-filter:blur(8px);box-shadow:0 6px 18px -8px rgba(0,0,0,.5);transition:background .18s,color .18s}

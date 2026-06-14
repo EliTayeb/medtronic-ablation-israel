@@ -28,7 +28,7 @@
     background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
     background-size:54px 54px;mask-image:radial-gradient(circle at 50% 40%,#000 30%,transparent 80%)}
   #deck{position:relative;z-index:2;height:100%}
-  .slide{position:absolute;inset:0;display:none;flex-direction:column;padding:48px 74px 78px;animation:in .55s cubic-bezier(.2,.7,.2,1)}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;padding:58px 74px 74px;animation:in .55s cubic-bezier(.2,.7,.2,1)}
   .slide.active{display:flex}
   @keyframes in{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
   .reveal{opacity:0;transform:translateY(15px);animation:rv .65s ease forwards}
@@ -95,16 +95,16 @@
   .ask .row .n{width:32px;height:32px;border-radius:9px;background:linear-gradient(140deg,var(--cobalt),var(--cyan));color:#03031a;font-weight:800;display:grid;place-items:center;flex:none}
   .ask .row b{color:#fff}.ask .row span{color:var(--mut);font-size:14px}
   .foot{position:absolute;left:74px;right:74px;bottom:26px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--mut);z-index:5}
-  .dots{display:flex;gap:9px}.dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.22);cursor:pointer;transition:.2s;padding:0}
+  .dots{display:flex;gap:9px;margin-right:104px}.dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.22);cursor:pointer;transition:.2s;padding:0}
   .dots button.on{background:var(--accent);box-shadow:0 0 12px var(--accent);transform:scale(1.25)}
   .progress{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--cobalt),var(--cyan));z-index:30;transition:width .5s;box-shadow:0 0 12px var(--accent)}
   .nav{position:fixed;bottom:20px;right:26px;display:flex;gap:9px;z-index:40}
   .nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--glassb);background:var(--glass);color:#fff;font-size:19px;cursor:pointer;backdrop-filter:blur(8px)}
   .nav button:hover{background:var(--accent);color:#03031a}
   .draft{position:fixed;top:16px;left:50%;transform:translateX(-50%);font-size:10.5px;font-weight:800;letter-spacing:.16em;color:var(--accent);border:1px solid var(--glassb);background:var(--glass);padding:5px 12px;border-radius:20px;z-index:20}
-  @media(max-width:1024px){.slide{padding:40px 56px 68px}}
-  @media(max-width:768px){.slide{padding:32px 40px 58px}.swlayout{grid-template-columns:1fr}.swlayout{gap:16px}}
-  @media(max-width:480px){.slide{padding:24px 28px 48px}.stitle{font-size:44px}.swot-nav{gap:6px;margin-top:6px}.sub{font-size:15px}}
+  @media(max-width:1024px){.slide{padding:56px 56px 64px}}
+  @media(max-width:768px){.slide{padding:56px 40px 56px}.swlayout{grid-template-columns:1fr;gap:16px}}
+  @media(max-width:480px){.slide{padding:54px 28px 44px}.stitle{font-size:44px}.swot-nav{gap:6px;margin-top:6px}.sub{font-size:15px}}
 </style>
 </head>
 <body>
@@ -120,7 +120,6 @@
 <script>(function(){var r=document.documentElement,sw=document.querySelector('.vswitch');function apply(s){r.setAttribute('data-shade',s);sw.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.shade===s)})}sw.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.shade);try{localStorage.setItem('deckShade3',b.dataset.shade)}catch(e){}})});var s='lightest';try{s=localStorage.getItem('deckShade3')||'lightest'}catch(e){}apply(s)})();</script>
 <div class="bg"><div class="blob b1"></div><div class="blob b2"></div></div>
 <div class="grid-ov"></div>
-<div class="draft">● STRATEGIC PLAN · SWOT</div>
 <div class="progress" id="progress"></div>
 
 <div id="deck">
@@ -197,6 +196,7 @@
             <li>New <b>Clalit codes for Emprint 150W</b>.</li>
             <li>Long-term strategic contracts.</li>
             <li>Increase awareness to Family doctors and patients.</li>
+            <li><b>Expand the market</b> by defining and developing new ablation indications, such as thyroid cancer.</li>
           </ul>
         </div>
         <div class="reveal r3 bigletter" style="color:var(--cyan);opacity:.14">O</div>
@@ -220,6 +220,7 @@
             <li>War-related delays and cancellations of elective surgery.</li>
             <li>BSC has built strong ties in the field.</li>
             <li>Medtechnica is offering better pricing on parts and gas.</li>
+            <li><b>Currency exposure:</b> USD-to-NIS exchange-rate swings affect pricing and margins.</li>
           </ul>
         </div>
         <div class="reveal r3 bigletter" style="color:var(--amber);opacity:.14">T</div>
@@ -240,6 +241,10 @@
             <li>The <b>first hands-on ablation classes</b> in Israel.</li>
             <li>The <b>first dedicated ablation conferences</b> in Israel.</li>
             <li>An international congress, sending our leading physicians.</li>
+            <li><b>Tighten connections</b> with our customers.</li>
+            <li><b>Journal clubs</b> across hospitals throughout Israel.</li>
+            <li><b>Reduce shipment costs</b> by placing systems on site.</li>
+            <li><b>Renew all expiring contracts.</b></li>
           </ul>
         </div>
         <div class="reveal r3 bigletter" style="color:var(--cyan);opacity:.14">A</div>
