@@ -265,6 +265,7 @@
 </head>
 <body>
   <a class="backhome" href="index.html" title="Back to all presentations">⌂ All decks</a>
+  <a class="backhome" href="#slide=0" id="menubtn" title="Back to this deck's menu" style="left:152px">☰ Menu</a>
   <style>.backhome{position:fixed;top:18px;left:22px;z-index:45;display:inline-flex;align-items:center;gap:7px;font:700 12.5px/1 'Hanken Grotesk','Segoe UI',sans-serif;color:#fff;text-decoration:none;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:9px 15px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px -8px rgba(0,0,0,.5);transition:background .18s,color .18s}.backhome:hover{background:#23e6e6;color:#03031a;border-color:#23e6e6}</style>
   <div class="vswitch">
     <span>Shade</span>
@@ -311,8 +312,8 @@
       <div class="body">
         <div class="grid g3 reveal r3" style="margin-top:8px">
           <div class="card" data-goto="2"><div class="ic">🗺️</div><div class="num-badge">PILLAR 01</div><h3>Map the field</h3><p>An interactive map of every ablation center in Israel: who's there, what they use, and the opportunity at each.</p></div>
-          <div class="card" data-goto="4"><div class="ic">🌍</div><div class="num-badge">PILLAR 02</div><h3>Show up where it matters</h3><p>The international ablation congress we'll attend: KOL access, the latest evidence, and a showcase for our portfolio.</p></div>
-          <div class="card" data-goto="5"><div class="ic">🎓</div><div class="num-badge">PILLAR 03</div><h3>Build it at home</h3><p>Israeli ablation conferences, academic flights, and the first hands-on training classes for doctors in Israel.</p></div>
+          <div class="card" data-goto="3"><div class="ic">🌍</div><div class="num-badge">PILLAR 02</div><h3>Show up where it matters</h3><p>The international ablation congress we'll attend: KOL access, the latest evidence, and a showcase for our portfolio.</p></div>
+          <div class="card" data-goto="4"><div class="ic">🎓</div><div class="num-badge">PILLAR 03</div><h3>Build it at home</h3><p>Israeli ablation conferences, academic flights, and the first hands-on training classes for doctors in Israel.</p></div>
         </div>
       </div>
       <div class="foot"><span>Medtronic · Ablation Israel</span><span class="dots"></span></div>
@@ -366,7 +367,7 @@
         <div class="grid g3 reveal r3">
           <div class="card"><div class="ic">🇮🇱</div><div class="num-badge">FIRST OF ITS KIND</div><h3>Israeli ablation conference</h3><p>A dedicated national forum: sessions sessions purely on ablation, bringing every center together in one room.</p></div>
           <div class="card"><div class="ic">✈️</div><div class="num-badge">PEER LEARNING</div><h3>Academic flights</h3><p>Curated trips with Israeli doctors to leading ablation centers &amp; congresses, building KOLs and loyalty.</p></div>
-          <div class="card" data-goto="6"><div class="ic">🧑‍⚕️</div><div class="num-badge">HANDS-ON</div><h3>Hands-on classes</h3><p>The first hands-on ablation training for doctors <b>in Israel</b>: real products, real technique, real confidence.</p></div>
+          <div class="card" data-goto="5"><div class="ic">🧑‍⚕️</div><div class="num-badge">HANDS-ON</div><h3>Hands-on classes</h3><p>The first hands-on ablation training for doctors <b>in Israel</b>: real products, real technique, real confidence.</p></div>
         </div>
         <div class="card banner reveal r4" style="margin-top:18px">
           <p style="font-size:15.5px;color:var(--ink)">💡 <b style="color:#fff">Why this wins:</b> physicians who train on our products in a hands-on setting adopt them, champion them, and teach the next cohort. Education is the most durable form of market share.</p>
@@ -722,6 +723,10 @@ function scramble(el){
   },26);
 }
 document.querySelectorAll('.grad').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();scramble(el);}));
+
+// Menu button → back to this deck's first (menu) slide
+const menuBtn=document.getElementById('menubtn');
+if(menuBtn){menuBtn.addEventListener('click',e=>{e.preventDefault();show(0);});}
 
 loadSlideFromHash();
 </script>

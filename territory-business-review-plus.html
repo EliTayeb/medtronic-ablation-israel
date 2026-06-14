@@ -109,11 +109,6 @@
 </head>
 <body>
 <a class="backhome" href="index.html" title="Back to all presentations">⌂ All decks</a>
-<a class="backhome" href="vision.html" title="Go to strategy menu" style="left:152px">📊 Strategy</a>
-<style>
-  .backhome{position:fixed;top:18px;left:24px;z-index:45;display:inline-flex;align-items:center;gap:7px;font:700 12.5px/1 'Hanken Grotesk','Segoe UI',sans-serif;color:#fff;text-decoration:none;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:9px 15px;backdrop-filter:blur(8px);box-shadow:0 6px 18px -8px rgba(0,0,0,.5);transition:background .18s,color .18s}
-  .backhome:hover{background:var(--cyan);color:#03031a;border-color:var(--cyan)}
-</style>
 <style>.backhome{position:fixed;top:18px;left:22px;z-index:45;display:inline-flex;align-items:center;gap:7px;font:700 12.5px/1 'Hanken Grotesk','Segoe UI',sans-serif;color:#fff;text-decoration:none;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:9px 15px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px -8px rgba(0,0,0,.5);transition:background .18s,color .18s}.backhome:hover{background:#23e6e6;color:#03031a;border-color:#23e6e6}</style>
 <div class="vswitch">
   <span>Shade</span>
@@ -333,11 +328,14 @@ const slides=[...document.querySelectorAll('.slide')],progress=document.getEleme
 document.querySelectorAll('.dots').forEach(d=>{slides.forEach((_,k)=>{const b=document.createElement('button');b.onclick=()=>show(k);d.appendChild(b);});});
 function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle('active',k===i));
   progress.style.width=((i+1)/slides.length*100)+'%';
-  document.querySelectorAll('.dots').forEach(d=>[...d.children].forEach((b,k)=>b.classList.toggle('on',k===i)));}
+  document.querySelectorAll('.dots').forEach(d=>[...d.children].forEach((b,k)=>b.classList.toggle('on',k===i)));
+  window.location.hash='slide='+i;}
+function loadSlideFromHash(){const m=window.location.hash.slice(1).match(/slide=(\d+)/);show(m?parseInt(m[1],10):0);}
+window.addEventListener('hashchange',loadSlideFromHash);
 document.getElementById('next').onclick=()=>show(i+1);
 document.getElementById('prev').onclick=()=>show(i-1);
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')show(i+1);else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);});
-show(0);
+loadSlideFromHash();
 </script>
 </body>
 </html>
